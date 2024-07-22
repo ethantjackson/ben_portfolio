@@ -5,7 +5,7 @@ const IntroSplash = () => {
   const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => setOpacity(1), 200);
+    setTimeout(() => setOpacity(1), 500);
   }, []);
 
   return (
@@ -29,7 +29,10 @@ const IntroSplash = () => {
           transition: 'opacity 3s ease-in-out',
         }}
       >
-        <source src={'ThatWhichWeLeftBehindWide.mp4'} type='video/mp4' />
+        <source
+          src='https://res.cloudinary.com/workoutcloud/video/upload/v1721628080/ThatWhichWeLeftBehindWide_v3fvqe.mp4'
+          type='video/mp4'
+        />
         Your browser does not support the video tag.
       </video>
     </Box>
