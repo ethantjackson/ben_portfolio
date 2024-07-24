@@ -5,34 +5,24 @@ import { INTRO_VID_ASPECT, NAV_ITEMS } from './constants';
 const START_DELAY = 3000;
 const STEP_DELAY = 300;
 
-const IntroNav = () => {
-  const [winWidth, setWinWidth] = useState(window.innerWidth);
-  const [winHeight, setWinHeight] = useState(window.innerHeight);
+const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
   const [animIdx, setAnimIdx] = useState(-1);
 
   useEffect(() => {
     for (let i = 0; i < 1 + NAV_ITEMS.length; ++i) {
       setTimeout(() => setAnimIdx(i), START_DELAY + i * STEP_DELAY);
     }
-
-    const handleResize = () => {
-      setWinWidth(window.innerWidth);
-      setWinHeight(window.innerHeight);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
 
-  useEffect(() => {
-    console.log(animIdx);
-  }, [animIdx]);
+  const handleLink = (event, targetID) => {
+    event.preventDefault();
+    scrollTo(targetID);
+  };
 
   return (
     <Box
       sx={{
-        position: 'absolute',
+        position: 'fixed',
         width: '100%',
         height: `${(winHeight - INTRO_VID_ASPECT * winWidth) / 2}px`,
         minHeight: '10vh',
@@ -73,8 +63,12 @@ const IntroNav = () => {
             {NAV_ITEMS.map((item, idx) => (
               <Typography
                 key={item}
-                variant='p'
+                component='a'
+                href={`#{${item}}`}
+                onClick={(e) => handleLink(e, `#${item}`)}
                 sx={{
+                  textDecoration: 'none',
+                  color: 'inherit',
                   letterSpacing: '-1.75px',
                   cursor: 'pointer',
                   fontWeight: '300',
