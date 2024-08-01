@@ -6,7 +6,6 @@ const Work = () => {
     <Box
       id='#WORK'
       sx={{
-        height: '100vh',
         backgroundColor: '#fff',
         position: 'relative',
       }}
