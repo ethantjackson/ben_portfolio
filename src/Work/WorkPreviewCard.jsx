@@ -28,6 +28,7 @@ const WorkPreviewCard = ({ videoURL, projectName, thumbnailTimeSecond }) => {
         width: '100%',
         height: '100%',
         position: 'relative',
+        cursor: 'pointer',
       }}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
