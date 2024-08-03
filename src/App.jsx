@@ -1,6 +1,6 @@
 import IntroSplash from './IntroSplash';
 import IntroNav from './IntroNav';
-import Work from './Work';
+import Work from './Work/Work';
 import { useEffect, useRef, useState } from 'react';
 import { scroller } from 'react-scroll';
 import { SCROLL_TIME_MS } from './constants';
