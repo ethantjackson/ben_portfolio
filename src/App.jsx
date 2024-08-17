@@ -8,22 +8,23 @@ import { SCROLL_TIME_MS } from './constants';
 function App() {
   const [winWidth, setWinWidth] = useState(window.innerWidth);
   const [winHeight, setWinHeight] = useState(window.innerHeight);
+  const [scrollTarget, setScrollTarget] = useState('');
   const isScrolling = useRef(false);
 
   const scrollTo = (targetID) => {
     if (isScrolling.current) return;
+    setScrollTarget(targetID);
     isScrolling.current = true;
     scroller.scrollTo(targetID);
     setTimeout(() => (isScrolling.current = false), SCROLL_TIME_MS);
   };
 
   useEffect(() => {
-    const preventManualScroll = (e) => {
-      if (isScrolling.current) e.preventDefault();
-    };
-
     const handleScroll = (e) => {
-      e.preventDefault();
+      const workSection = document.getElementById('#WORK');
+      const hasReachedWorkSection =
+        workSection?.getBoundingClientRect().top <= 0;
+      if (!hasReachedWorkSection) e.preventDefault();
       const deltaY = e.deltaY;
       if (deltaY < 0) {
         return;
@@ -37,10 +38,8 @@ function App() {
 
     window.scrollTo({ top: 0 });
     window.addEventListener('wheel', handleScroll, { passive: false });
-    window.addEventListener('wheel', preventManualScroll, { passive: false });
     return () => {
       window.removeEventListener('wheel', handleScroll);
-      window.removeEventListener('wheel', preventManualScroll);
     };
   }, []);
 
@@ -59,7 +58,7 @@ function App() {
     <div>
       <IntroNav winHeight={winHeight} winWidth={winWidth} scrollTo={scrollTo} />
       <IntroSplash />
-      <Work winHeight={winHeight} winWidth={winWidth} />
+      <Work isScrollingToWork={scrollTarget === '#WORK'} />
     </div>
   );
 }
