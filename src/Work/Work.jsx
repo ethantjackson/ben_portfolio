@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import WorkPreviewCard from './WorkPreviewCard';
 import { SCROLL_TIME_MS } from '../constants';
 
-const Work = ({ isScrollingToWork }) => {
+const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
   const [animStarted, setAnimStarted] = useState(false);
   const [titleOpacity, setTitleOpacity] = useState(0);
   const [descriptionOpacity, setDescriptionOpacity] = useState(0);
@@ -83,6 +83,8 @@ const Work = ({ isScrollingToWork }) => {
               videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722487797/transparentJet_final_01_ssujxx.mp4'
               projectName='QUINJET'
               thumbnailTimeSecond={1.5}
+              winWidth={winWidth}
+              winHeight={winHeight}
             />
           </Grid>
           <Grid item xs>
@@ -90,6 +92,8 @@ const Work = ({ isScrollingToWork }) => {
               videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722488383/YerbaMate_MainVideo_yaa37n.mp4'
               projectName='YERBA MATTE'
               thumbnailTimeSecond={1}
+              winWidth={winWidth}
+              winHeight={winHeight}
             />
           </Grid>
           <Grid item xs={5}>
@@ -97,6 +101,8 @@ const Work = ({ isScrollingToWork }) => {
               videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722489624/Guilt_MT_WideFormatCC_v7lxev.mp4'
               projectName='GUILT'
               thumbnailTimeSecond={6}
+              winWidth={winWidth}
+              winHeight={winHeight}
             />
           </Grid>
           <Grid item xs>
@@ -104,6 +110,8 @@ const Work = ({ isScrollingToWork }) => {
               videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722488890/NiiiceShot_TitleSequence_MAINVideo_m6djde.mp4'
               projectName='NIIICE SHOT'
               thumbnailTimeSecond={1}
+              winWidth={winWidth}
+              winHeight={winHeight}
             />
           </Grid>
         </Grid>

@@ -1,11 +1,25 @@
 import { Box } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-const IntroSplash = () => {
+const IntroSplash = ({ winHeight }) => {
   const [opacity, setOpacity] = useState(0);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => setOpacity(1), 500);
+
+    const pauseVideoWhenHidden = () => {
+      if (window.scrollY >= window.innerHeight) {
+        videoRef?.current?.pause();
+      } else {
+        videoRef?.current?.play();
+      }
+    };
+    window.addEventListener('scrollend', pauseVideoWhenHidden);
+
+    return () => {
+      window.removeEventListener('scrollend', pauseVideoWhenHidden);
+    };
   }, []);
 
   return (
@@ -22,8 +36,9 @@ const IntroSplash = () => {
         }}
       >
         <video
-          loop
           autoPlay
+          ref={videoRef}
+          loop
           muted
           style={{
             width: '100%',

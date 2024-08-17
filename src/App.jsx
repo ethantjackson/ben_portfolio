@@ -57,8 +57,12 @@ function App() {
   return (
     <div>
       <IntroNav winHeight={winHeight} winWidth={winWidth} scrollTo={scrollTo} />
-      <IntroSplash />
-      <Work isScrollingToWork={scrollTarget === '#WORK'} />
+      <IntroSplash winHeight={winHeight} />
+      <Work
+        isScrollingToWork={scrollTarget === '#WORK'}
+        winHeight={winHeight}
+        winWidth={winWidth}
+      />
     </div>
   );
 }
