@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { MODAL_ANIM_TIME_MS } from '../constants';
 import DimOverlay from '../Components/DimOverlay';
+import ProjectDetails from './ProjectDetails';
 
 const WorkPreviewCard = ({
   videoURL,
@@ -19,6 +20,7 @@ const WorkPreviewCard = ({
   const timeoutRef = useRef(null);
   const videoRef = useRef(null);
   const cardRef = useRef(null);
+  const modalRef = useRef(null);
 
   const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [detailModalOpenDelayed, setDetailModalOpenDelayed] = useState(false);
@@ -27,6 +29,15 @@ const WorkPreviewCard = ({
     setTimeout(() => {
       setDetailModalOpenDelayed(detailModalOpen);
     }, MODAL_ANIM_TIME_MS);
+
+    if (detailModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+      if (modalRef.current) {
+        modalRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
   }, [detailModalOpen]);
 
   useEffect(() => {
@@ -85,26 +96,18 @@ const WorkPreviewCard = ({
         onMouseLeave={() => setHovering(false)}
         ref={cardRef}
       >
-        {/* <WorkDetailModal open={detailModalOpen} setOpen={setDetailModalOpen} /> */}
-        {/* <Box
-          sx={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            zIndex: 2,
-            backgroundColor: '#fff',
-            borderRadius: '12px',
-            opacity: detailModalOpen ? '1' : '0',
-            transition: `opacity ${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
-          }}
-        /> */}
         <Box
+          ref={modalRef}
           sx={{
+            borderRadius:
+              detailModalOpen || detailModalOpenDelayed ? '1.2rem' : '0',
+            backgroundColor: 'white',
+            overflowY:
+              detailModalOpen && detailModalOpenDelayed ? 'scroll' : 'hidden',
             width: `${100 * xScale}%`,
             height: `${100 * yScale}%`,
             left: `${leftPos}px`,
             top: `${topPos}px`,
-            backgroundColor: '#222',
             position: 'absolute',
             transition: `width ${
               MODAL_ANIM_TIME_MS / 1000
@@ -117,7 +120,8 @@ const WorkPreviewCard = ({
             }s ease-in-out, transform 0.15s ease-in-out, filter 0.5s ease-in-out`,
             transform:
               hovering && !detailModalOpen ? 'scale(1.02)' : 'scale(1)',
-            filter: showText ? 'blur(1px)' : '',
+            filter:
+              showText && !detailModalOpen ? 'brightness(60%) blur(1px)' : '',
           }}
         >
           <video
@@ -128,19 +132,19 @@ const WorkPreviewCard = ({
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              transition: 'opacity 0.5s ease-in-out',
-              opacity: showText && !detailModalOpen ? 0.8 : 1,
             }}
           >
             <source src={videoURL} type='video/mp4' />
             Your browser does not support the video tag.
           </video>
+          <ProjectDetails projectName={projectName} />
         </Box>
         <Box
           display='flex'
           justifyContent='center'
           alignItems='center'
           sx={{
+            pointerEvents: 'none',
             textAlign: 'center',
             position: 'absolute',
             width: `${100 * xScale}%`,

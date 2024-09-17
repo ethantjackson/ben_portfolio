@@ -6,7 +6,7 @@ const DimOverlay = ({ active }) => {
   return (
     <Box
       sx={{
-        backdropFilter: 'blur(5px)', // This creates the blur effect
+        backdropFilter: 'brightness(80%) blur(5px)', // This creates the blur effect
         height: '100vh',
         width: '100vw',
         position: 'fixed',
