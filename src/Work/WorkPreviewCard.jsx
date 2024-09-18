@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
+import CloseIcon from '@mui/icons-material/Close';
 import { MODAL_ANIM_TIME_MS } from '../constants';
 import DimOverlay from '../Components/DimOverlay';
 import ProjectDetails from './ProjectDetails';
@@ -41,7 +42,7 @@ const WorkPreviewCard = ({
   }, [detailModalOpen]);
 
   useEffect(() => {
-    if (hovering) {
+    if (hovering || detailModalOpen) {
       videoRef.current.play();
     } else {
       videoRef.current.pause();
@@ -53,7 +54,7 @@ const WorkPreviewCard = ({
       clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => setShowText(false), 2000);
     }
-  }, [hovering, thumbnailTimeSecond]);
+  }, [hovering, thumbnailTimeSecond, detailModalOpen]);
 
   const expandToModal = (modalOpen) => {
     if (!modalOpen) {
@@ -84,13 +85,13 @@ const WorkPreviewCard = ({
           width: '100%',
           height: '45vh',
           zIndex: detailModalOpen || detailModalOpenDelayed ? '3' : '1',
-          // transform: `scale(${xScale}, ${yScale})`,
-          cursor: 'pointer',
+          cursor: !detailModalOpen ? 'pointer' : 'auto',
         }}
         onClick={() => {
-          expandToModal(!detailModalOpen);
-          setDetailModalOpen(!detailModalOpen);
-          // setHovering(false);
+          if (!detailModalOpen) {
+            expandToModal(!detailModalOpen);
+            setDetailModalOpen(!detailModalOpen);
+          }
         }}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
@@ -124,6 +125,35 @@ const WorkPreviewCard = ({
               showText && !detailModalOpen ? 'brightness(60%) blur(1px)' : '',
           }}
         >
+          {detailModalOpen && (
+            <Box
+              sx={{
+                position: 'sticky',
+                textAlign: 'right',
+                color: '#ddd',
+                top: '0',
+                height: '0',
+                zIndex: '1',
+              }}
+            >
+              <CloseIcon
+                sx={{
+                  position: 'relative',
+                  top: '16px',
+                  right: '16px',
+                  cursor: 'pointer',
+                  fontSize: '24px',
+                  fontWeight: '100',
+                }}
+                onClick={() => {
+                  if (detailModalOpen) {
+                    expandToModal(!detailModalOpen);
+                    setDetailModalOpen(!detailModalOpen);
+                  }
+                }}
+              />
+            </Box>
+          )}
           <video
             ref={videoRef}
             loop
