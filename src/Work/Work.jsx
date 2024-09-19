@@ -2,6 +2,7 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import WorkPreviewCard from './WorkPreviewCard';
 import { SCROLL_TIME_MS } from '../constants';
+import { PROJECTS_INFO } from '../ProjectsInfo';
 
 const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
   const [animStarted, setAnimStarted] = useState(false);
@@ -78,7 +79,25 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
         </Grid>
 
         <Grid container mt={3} spacing={3}>
-          <Grid item xs={7}>
+          {PROJECTS_INFO.map((project, idx) => (
+            <Grid
+              item
+              xs={idx % 4 === 0 || idx % 4 === 3 ? 7 : 5}
+              key={project.title}
+            >
+              <WorkPreviewCard
+                videoURL={project.previewURL}
+                projectName={project.title}
+                projectDescription={project.description}
+                detailsContent={project.detailsContent}
+                thumbnailTimeSeconds={project.thumbnailTimeSeconds}
+                projectCredits={project.credits}
+                winWidth={winWidth}
+                winHeight={winHeight}
+              />
+            </Grid>
+          ))}
+          {/* <Grid item xs={7}>
             <WorkPreviewCard
               videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722487797/transparentJet_final_01_ssujxx.mp4'
               projectName='QUINJET'
@@ -113,7 +132,7 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
               winWidth={winWidth}
               winHeight={winHeight}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Box>

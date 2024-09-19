@@ -8,7 +8,10 @@ import ProjectDetails from './ProjectDetails';
 const WorkPreviewCard = ({
   videoURL,
   projectName,
-  thumbnailTimeSecond,
+  projectDescription,
+  detailsContent,
+  thumbnailTimeSeconds,
+  projectCredits,
   winWidth,
   winHeight,
 }) => {
@@ -46,7 +49,7 @@ const WorkPreviewCard = ({
       videoRef.current.play();
     } else {
       videoRef.current.pause();
-      videoRef.current.currentTime = thumbnailTimeSecond;
+      videoRef.current.currentTime = thumbnailTimeSeconds;
     }
 
     setShowText(hovering);
@@ -54,7 +57,7 @@ const WorkPreviewCard = ({
       clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => setShowText(false), 2000);
     }
-  }, [hovering, thumbnailTimeSecond, detailModalOpen]);
+  }, [hovering, thumbnailTimeSeconds, detailModalOpen]);
 
   const expandToModal = (modalOpen) => {
     if (!modalOpen) {
@@ -167,7 +170,12 @@ const WorkPreviewCard = ({
             <source src={videoURL} type='video/mp4' />
             Your browser does not support the video tag.
           </video>
-          <ProjectDetails projectName={projectName} />
+          <ProjectDetails
+            projectName={projectName}
+            projectDescription={projectDescription}
+            detailsContent={detailsContent}
+            projectCredits={projectCredits}
+          />
         </Box>
         <Box
           display='flex'
