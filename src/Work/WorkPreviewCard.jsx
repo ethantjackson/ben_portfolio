@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { MODAL_ANIM_TIME_MS } from '../constants';
 import DimOverlay from '../Components/DimOverlay';
 import ProjectDetails from './ProjectDetails';
+import SeeMoreIndicator from './SeeMoreIndicator';
 
 const WorkPreviewCard = ({
   videoURL,
@@ -170,6 +171,8 @@ const WorkPreviewCard = ({
             <source src={videoURL} type='video/mp4' />
             Your browser does not support the video tag.
           </video>
+
+          {detailModalOpen && <SeeMoreIndicator modalRef={modalRef} />}
           <ProjectDetails
             projectName={projectName}
             projectDescription={projectDescription}

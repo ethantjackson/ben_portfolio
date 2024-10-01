@@ -78,7 +78,7 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
           />
         </Grid>
 
-        <Grid container mt={3} spacing={3}>
+        <Grid container mt={3} spacing={3} mb={5}>
           {PROJECTS_INFO.map((project, idx) => (
             <Grid
               item
@@ -97,42 +97,6 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
               />
             </Grid>
           ))}
-          {/* <Grid item xs={7}>
-            <WorkPreviewCard
-              videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722487797/transparentJet_final_01_ssujxx.mp4'
-              projectName='QUINJET'
-              thumbnailTimeSecond={1.5}
-              winWidth={winWidth}
-              winHeight={winHeight}
-            />
-          </Grid>
-          <Grid item xs>
-            <WorkPreviewCard
-              videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722488383/YerbaMate_MainVideo_yaa37n.mp4'
-              projectName='YERBA MATTE'
-              thumbnailTimeSecond={1}
-              winWidth={winWidth}
-              winHeight={winHeight}
-            />
-          </Grid>
-          <Grid item xs={5}>
-            <WorkPreviewCard
-              videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722489624/Guilt_MT_WideFormatCC_v7lxev.mp4'
-              projectName='GUILT'
-              thumbnailTimeSecond={6}
-              winWidth={winWidth}
-              winHeight={winHeight}
-            />
-          </Grid>
-          <Grid item xs>
-            <WorkPreviewCard
-              videoURL='https://res.cloudinary.com/workoutcloud/video/upload/v1722488890/NiiiceShot_TitleSequence_MAINVideo_m6djde.mp4'
-              projectName='NIIICE SHOT'
-              thumbnailTimeSecond={1}
-              winWidth={winWidth}
-              winHeight={winHeight}
-            />
-          </Grid> */}
         </Grid>
       </Container>
     </Box>
