@@ -9,7 +9,7 @@ export const PROJECTS_INFO = [
     title: 'QUINJET',
     thumbnailTimeSeconds: 1.5,
     previewURL:
-      'https://res.cloudinary.com/workoutcloud/video/upload/v1722487797/transparentJet_final_01_ssujxx.mp4',
+      'https://res.cloudinary.com/workoutcloud/video/upload/v1722488383/YerbaMate_MainVideo_yaa37n.mp4',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illo perspiciatis repellat delectus tenetur eum in neque rem Lorem eligendi inventore ut earum?',
     credits: {
