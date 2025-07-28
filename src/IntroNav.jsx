@@ -69,7 +69,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                 sx={{
                   textDecoration: 'none',
                   color: 'inherit',
-                  letterSpacing: '-1.75px',
+                  letterSpacing: '-1px',
                   cursor: 'pointer',
                   fontWeight: '300',
                   position: 'relative',

@@ -34,17 +34,17 @@ const ProjectDetails = ({
         justifyContent='center'
         mt={1}
       >
-        {detailsContent.map((content) => {
+        {detailsContent.map((content, index) => {
           if (content.contentType === CONTENT_TYPE.STYLEFRAME) {
             return (
-              <Grid item xs={content.width}>
+              <Grid item xs={content.width} key={index}>
                 <img width='100%' alt='ProjectImage' src={content.url} />
               </Grid>
             );
           }
           if (content.contentType === CONTENT_TYPE.TEXT) {
             return (
-              <>
+              <span key={index}>
                 <Grid item xs={12} sx={{ textAlign: 'center' }} mt={1}>
                   <Typography variant='h4' sx={{ fontWeight: '500' }}>
                     {content.header}
@@ -53,10 +53,10 @@ const ProjectDetails = ({
                 <Grid item xs={12} sx={{ textAlign: 'justify' }} mt={-2}>
                   <Typography variant='h6'>{content.value}</Typography>
                 </Grid>
-              </>
+              </span>
             );
           }
-          return <></>;
+          return <span key={index}></span>;
         })}
 
         <Grid item xs={12} sx={{ textAlign: 'center' }} mt={1}>
@@ -65,8 +65,8 @@ const ProjectDetails = ({
           </Typography>
         </Grid>
         <Grid item xs={12} sx={{ textAlign: 'center' }} mt={-2}>
-          {Object.entries(projectCredits).map((val) => (
-            <Typography variant='h6'>
+          {Object.entries(projectCredits).map((val, index) => (
+            <Typography variant='h6' key={index}>
               {_.startCase(val[0])} - {val[1]}
             </Typography>
           ))}

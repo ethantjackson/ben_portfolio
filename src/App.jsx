@@ -4,6 +4,7 @@ import Work from './Work/Work';
 import { useEffect, useRef, useState } from 'react';
 import { scroller } from 'react-scroll';
 import { SCROLL_TIME_MS } from './constants';
+import Contact from './Contact/Contact';
 
 function App() {
   const [winWidth, setWinWidth] = useState(window.innerWidth);
@@ -59,10 +60,11 @@ function App() {
       <IntroNav winHeight={winHeight} winWidth={winWidth} scrollTo={scrollTo} />
       <IntroSplash winHeight={winHeight} />
       <Work
-        isScrollingToWork={scrollTarget === '#WORK'}
+        isScrollingToWork={scrollTarget !== ''}
         winHeight={winHeight}
         winWidth={winWidth}
       />
+      <Contact />
     </div>
   );
 }
