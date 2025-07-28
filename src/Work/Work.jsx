@@ -36,9 +36,12 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
       sx={{
         backgroundColor: '#fff',
         position: 'relative',
+        paddingBottom: '8vh',
       }}
     >
-      <Container sx={{ paddingTop: '10vh' }}>
+      <Container
+        sx={{ paddingTop: '10vh', maxWidth: 'calc(100% - 200px) !important' }}
+      >
         <Grid container justifyContent='center'>
           <Grid item xs={3} sx={{ textAlign: 'left' }}>
             <Typography
@@ -66,37 +69,44 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
           </Grid>
           <Grid
             item
-            xs={11}
             mt={6}
             sx={{
               transform: `scaleX(${dividerWidth})`,
               transition: 'transform 0.6s ease-in-out',
               height: '2px',
-              background:
-                'linear-gradient(to right, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0))',
+              background: 'black',
+              width: '80%',
             }}
           />
         </Grid>
 
-        <Grid container mt={3} spacing={3} mb={5}>
-          {PROJECTS_INFO.map((project, idx) => (
-            <Grid
-              item
-              xs={idx % 4 === 0 || idx % 4 === 3 ? 7 : 5}
-              key={project.title}
-            >
-              <WorkPreviewCard
-                videoURL={project.previewURL}
-                projectName={project.title}
-                projectDescription={project.description}
-                detailsContent={project.detailsContent}
-                thumbnailTimeSeconds={project.thumbnailTimeSeconds}
-                projectCredits={project.credits}
-                winWidth={winWidth}
-                winHeight={winHeight}
-              />
-            </Grid>
-          ))}
+        <Grid container pt={{ xs: 4, xl: 6 }} spacing={{ xs: 2, xl: 3 }} mb={5}>
+          {PROJECTS_INFO.map((project, idx) => {
+            const isWide = idx % 4 === 0 || idx % 4 === 3;
+            const widthFraction = isWide ? 21 / 37 : 16 / 37;
+
+            return (
+              <Grid
+                item
+                key={project.title}
+                sx={{
+                  width: `${widthFraction * 100}%`,
+                  aspectRatio: isWide ? '21/9' : '16/9',
+                }}
+              >
+                <WorkPreviewCard
+                  videoURL={project.previewURL}
+                  projectName={project.title}
+                  projectDescription={project.description}
+                  detailsContent={project.detailsContent}
+                  thumbnailTimeSeconds={project.thumbnailTimeSeconds}
+                  projectCredits={project.credits}
+                  winWidth={winWidth}
+                  winHeight={winHeight}
+                />
+              </Grid>
+            );
+          })}
         </Grid>
       </Container>
     </Box>

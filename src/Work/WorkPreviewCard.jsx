@@ -5,6 +5,7 @@ import { MODAL_ANIM_TIME_MS } from '../constants';
 import DimOverlay from '../Components/DimOverlay';
 import ProjectDetails from './ProjectDetails';
 import SeeMoreIndicator from './SeeMoreIndicator';
+import FadeInOnScroll from '../Transitions/FadeInOnScroll';
 
 const WorkPreviewCard = ({
   videoURL,
@@ -87,7 +88,7 @@ const WorkPreviewCard = ({
         sx={{
           position: 'relative',
           width: '100%',
-          height: '45vh',
+          height: '100%',
           zIndex: detailModalOpen || detailModalOpenDelayed ? '3' : '1',
           cursor: !detailModalOpen ? 'pointer' : 'auto',
         }}
@@ -101,120 +102,122 @@ const WorkPreviewCard = ({
         onMouseLeave={() => setHovering(false)}
         ref={cardRef}
       >
-        <Box
-          ref={modalRef}
-          sx={{
-            borderRadius:
-              detailModalOpen || detailModalOpenDelayed ? '1.2rem' : '0',
-            backgroundColor: 'white',
-            overflowY:
-              detailModalOpen && detailModalOpenDelayed ? 'scroll' : 'hidden',
-            width: `${100 * xScale}%`,
-            height: `${100 * yScale}%`,
-            left: `${leftPos}px`,
-            top: `${topPos}px`,
-            position: 'absolute',
-            transition: `width ${
-              MODAL_ANIM_TIME_MS / 1000
-            }s ease-in-out, height ${
-              MODAL_ANIM_TIME_MS / 1000
-            }s ease-in-out, left ${
-              MODAL_ANIM_TIME_MS / 1000
-            }s ease-in-out, top ${
-              MODAL_ANIM_TIME_MS / 1000
-            }s ease-in-out, transform 0.15s ease-in-out, filter 0.5s ease-in-out`,
-            transform:
-              hovering && !detailModalOpen ? 'scale(1.02)' : 'scale(1)',
-            filter:
-              showText && !detailModalOpen ? 'brightness(60%) blur(1px)' : '',
-          }}
-        >
-          {detailModalOpen && (
-            <Box
-              sx={{
-                position: 'sticky',
-                textAlign: 'right',
-                color: '#ddd',
-                top: '0',
-                height: '0',
-                zIndex: '1',
+        <FadeInOnScroll>
+          <Box
+            ref={modalRef}
+            sx={{
+              borderRadius:
+                detailModalOpen || detailModalOpenDelayed ? '1.2rem' : '0',
+              backgroundColor: 'white',
+              overflowY:
+                detailModalOpen && detailModalOpenDelayed ? 'scroll' : 'hidden',
+              width: `${100 * xScale}%`,
+              height: `${100 * yScale}%`,
+              left: `${leftPos}px`,
+              top: `${topPos}px`,
+              position: 'absolute',
+              transition: `width ${
+                MODAL_ANIM_TIME_MS / 1000
+              }s ease-in-out, height ${
+                MODAL_ANIM_TIME_MS / 1000
+              }s ease-in-out, left ${
+                MODAL_ANIM_TIME_MS / 1000
+              }s ease-in-out, top ${
+                MODAL_ANIM_TIME_MS / 1000
+              }s ease-in-out, transform 0.15s ease-in-out, filter 0.5s ease-in-out`,
+              transform:
+                hovering && !detailModalOpen ? 'scale(1.02)' : 'scale(1)',
+              filter:
+                showText && !detailModalOpen ? 'brightness(60%) blur(1px)' : '',
+            }}
+          >
+            {detailModalOpen && (
+              <Box
+                sx={{
+                  position: 'sticky',
+                  textAlign: 'right',
+                  color: '#ddd',
+                  top: '0',
+                  height: '0',
+                  zIndex: '1',
+                }}
+              >
+                <CloseIcon
+                  sx={{
+                    position: 'relative',
+                    top: '16px',
+                    right: '16px',
+                    cursor: 'pointer',
+                    fontSize: '24px',
+                    fontWeight: '100',
+                  }}
+                  onClick={() => {
+                    if (detailModalOpen) {
+                      expandToModal(!detailModalOpen);
+                      setDetailModalOpen(!detailModalOpen);
+                    }
+                  }}
+                />
+              </Box>
+            )}
+            <video
+              ref={videoRef}
+              loop
+              muted
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
               }}
             >
-              <CloseIcon
-                sx={{
-                  position: 'relative',
-                  top: '16px',
-                  right: '16px',
-                  cursor: 'pointer',
-                  fontSize: '24px',
-                  fontWeight: '100',
-                }}
-                onClick={() => {
-                  if (detailModalOpen) {
-                    expandToModal(!detailModalOpen);
-                    setDetailModalOpen(!detailModalOpen);
-                  }
-                }}
-              />
-            </Box>
-          )}
-          <video
-            ref={videoRef}
-            loop
-            muted
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
-          >
-            <source src={videoURL} type='video/mp4' />
-            Your browser does not support the video tag.
-          </video>
+              <source src={videoURL} type='video/mp4' />
+              Your browser does not support the video tag.
+            </video>
 
-          {detailModalOpen && <SeeMoreIndicator modalRef={modalRef} />}
-          <ProjectDetails
-            projectName={projectName}
-            projectDescription={projectDescription}
-            detailsContent={detailsContent}
-            projectCredits={projectCredits}
-          />
-        </Box>
-        <Box
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-          sx={{
-            pointerEvents: 'none',
-            textAlign: 'center',
-            position: 'absolute',
-            width: `${100 * xScale}%`,
-            height: `${100 * yScale}%`,
-            left: `${leftPos}px`,
-            top: `${topPos}px`,
-            transition: `width ${
-              MODAL_ANIM_TIME_MS / 1000
-            }s ease-in-out, height ${
-              MODAL_ANIM_TIME_MS / 1000
-            }s ease-in-out, left ${
-              MODAL_ANIM_TIME_MS / 1000
-            }s ease-in-out, top ${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
-          }}
-        >
-          <Typography
-            variant='h3'
+            {detailModalOpen && <SeeMoreIndicator modalRef={modalRef} />}
+            <ProjectDetails
+              projectName={projectName}
+              projectDescription={projectDescription}
+              detailsContent={detailsContent}
+              projectCredits={projectCredits}
+            />
+          </Box>
+          <Box
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
             sx={{
-              color: 'white',
-              transform: `scale(${xScale}, ${yScale})`,
-              opacity: showText && !detailModalOpen ? 1 : 0,
-              transition: `all ${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
-              letterSpacing: '2px',
-              fontWeight: 'bold',
+              pointerEvents: 'none',
+              textAlign: 'center',
+              position: 'absolute',
+              width: `${100 * xScale}%`,
+              height: `${100 * yScale}%`,
+              left: `${leftPos}px`,
+              top: `${topPos}px`,
+              transition: `width ${
+                MODAL_ANIM_TIME_MS / 1000
+              }s ease-in-out, height ${
+                MODAL_ANIM_TIME_MS / 1000
+              }s ease-in-out, left ${
+                MODAL_ANIM_TIME_MS / 1000
+              }s ease-in-out, top ${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
             }}
           >
-            {projectName}
-          </Typography>
-        </Box>
+            <Typography
+              variant='h3'
+              sx={{
+                color: 'white',
+                transform: `scale(${xScale}, ${yScale})`,
+                opacity: showText && !detailModalOpen ? 1 : 0,
+                transition: `all ${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
+                letterSpacing: '2px',
+                fontWeight: 'bold',
+              }}
+            >
+              {projectName}
+            </Typography>
+          </Box>
+        </FadeInOnScroll>
       </Box>
     </>
   );
