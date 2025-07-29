@@ -39,7 +39,7 @@ const FadeInOnScroll = ({
     return () => {
       if (current) observer.unobserve(current);
     };
-  }, [offset]);
+  }, [offset, delay]);
 
   return (
     <Box

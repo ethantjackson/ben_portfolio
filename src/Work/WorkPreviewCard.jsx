@@ -16,6 +16,7 @@ const WorkPreviewCard = ({
   projectCredits,
   winWidth,
   winHeight,
+  fadeInDelay,
 }) => {
   const [hovering, setHovering] = useState(false);
   const [showText, setShowText] = useState(false);
@@ -102,7 +103,7 @@ const WorkPreviewCard = ({
         onMouseLeave={() => setHovering(false)}
         ref={cardRef}
       >
-        <FadeInOnScroll>
+        <FadeInOnScroll delay={fadeInDelay}>
           <Box
             ref={modalRef}
             sx={{
