@@ -1,10 +1,10 @@
 import { Box, Typography } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { MODAL_ANIM_TIME_MS } from '../constants';
 import DimOverlay from '../Components/DimOverlay';
 import ProjectDetails from './ProjectDetails';
-import SeeMoreIndicator from './SeeMoreIndicator';
+// import SeeMoreIndicator from './SeeMoreIndicator';
 import FadeInOnScroll from '../Transitions/FadeInOnScroll';
 
 const WorkPreviewCard = ({
@@ -32,6 +32,48 @@ const WorkPreviewCard = ({
   const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [detailModalOpenDelayed, setDetailModalOpenDelayed] = useState(false);
 
+  const expandToModal = useCallback(
+    (modalOpen) => {
+      if (!modalOpen) {
+        setXScale(1);
+        setYScale(1);
+        setLeftPos(0);
+        setTopPos(0);
+        return;
+      }
+      const dims = cardRef?.current.getBoundingClientRect();
+      const newXScale = (winWidth * 0.9) / dims.width;
+      const newYScale = (winHeight * 0.9) / dims.height;
+      setXScale(newXScale);
+      setYScale(newYScale);
+
+      const newLeft = winWidth * 0.05 - dims.left;
+      const newTop = winHeight * 0.05 - dims.top;
+      setLeftPos(newLeft);
+      setTopPos(newTop);
+    },
+    [winWidth, winHeight]
+  );
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        detailModalOpen &&
+        modalRef.current &&
+        !modalRef.current.contains(event.target)
+      ) {
+        expandToModal(false);
+        setDetailModalOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [detailModalOpen, expandToModal]);
+
   useEffect(() => {
     setTimeout(() => {
       setDetailModalOpenDelayed(detailModalOpen);
@@ -39,19 +81,27 @@ const WorkPreviewCard = ({
 
     if (detailModalOpen) {
       document.body.style.overflow = 'hidden';
+      // setTimeout(() => {
+      //   if (modalRef.current) {
+      //     modalRef.current.scrollTo({
+      //       top: winHeight * 0.9 + 10,
+      //       behavior: 'smooth',
+      //     });
+      //   }
+      // }, MODAL_ANIM_TIME_MS);
     } else {
       document.body.style.overflow = 'auto';
       if (modalRef.current) {
         modalRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
-  }, [detailModalOpen]);
+  }, [detailModalOpen, winHeight]);
 
   useEffect(() => {
     if (hovering || detailModalOpen) {
-      videoRef.current.play();
+      videoRef.current?.play();
     } else {
-      videoRef.current.pause();
+      videoRef.current?.pause();
       videoRef.current.currentTime = thumbnailTimeSeconds;
     }
 
@@ -61,26 +111,6 @@ const WorkPreviewCard = ({
       timeoutRef.current = setTimeout(() => setShowText(false), 2000);
     }
   }, [hovering, thumbnailTimeSeconds, detailModalOpen]);
-
-  const expandToModal = (modalOpen) => {
-    if (!modalOpen) {
-      setXScale(1);
-      setYScale(1);
-      setLeftPos(0);
-      setTopPos(0);
-      return;
-    }
-    const dims = cardRef?.current.getBoundingClientRect();
-    const newXScale = (winWidth * 0.9) / dims.width;
-    const newYScale = (winHeight * 0.9) / dims.height;
-    setXScale(newXScale);
-    setYScale(newYScale);
-
-    const newLeft = winWidth * 0.05 - dims.left;
-    const newTop = winHeight * 0.05 - dims.top;
-    setLeftPos(newLeft);
-    setTopPos(newTop);
-  };
 
   return (
     <>
@@ -167,21 +197,30 @@ const WorkPreviewCard = ({
               muted
               style={{
                 width: '100%',
-                height: '100%',
+                // height: '100%',
                 objectFit: 'cover',
+                height: detailModalOpen ? '0' : '100%',
+                transition: `${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
               }}
             >
               <source src={videoURL} type='video/mp4' />
               Your browser does not support the video tag.
             </video>
 
-            {detailModalOpen && <SeeMoreIndicator modalRef={modalRef} />}
-            <ProjectDetails
-              projectName={projectName}
-              projectDescription={projectDescription}
-              detailsContent={detailsContent}
-              projectCredits={projectCredits}
-            />
+            {/* {detailModalOpen && <SeeMoreIndicator modalRef={modalRef} />} */}
+            <Box
+              sx={{
+                opacity: detailModalOpenDelayed ? 1 : 0,
+                transition: `opacity ${detailModalOpen ? 2 : 0.3}s`,
+              }}
+            >
+              <ProjectDetails
+                projectName={projectName}
+                projectDescription={projectDescription}
+                detailsContent={detailsContent}
+                projectCredits={projectCredits}
+              />
+            </Box>
           </Box>
           <Box
             display='flex'
