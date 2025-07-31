@@ -1,18 +1,41 @@
-import { Box, Container, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { Box, Typography } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
 import { INTRO_VID_ASPECT, NAV_ITEMS } from './constants';
-
-const START_DELAY = 3000;
-const STEP_DELAY = 300;
+import NavbarCollapser from './Components/NavbarCollapser';
 
 const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
   const [animIdx, setAnimIdx] = useState(-1);
+  const [isNavbarCollapsed, setIsNavbarCollapsed] = useState(true);
+  const [isStartNavbar, setIsStartNavbar] = useState(true);
+  const [isStartNavbarDelayed, setIsStartNavbarDelayed] = useState(true);
+
+  const animationTimeoutsRef = useRef([]);
+
+  const triggerAnimations = (startDelay, stepDelay, isReversed) => {
+    animationTimeoutsRef.current.forEach(clearTimeout);
+    animationTimeoutsRef.current = [];
+
+    const count = NAV_ITEMS.length;
+
+    for (let i = 0; i <= count; ++i) {
+      const index = isReversed ? count - i - 1 : i;
+      const timeoutId = setTimeout(
+        () => setAnimIdx(index),
+        startDelay + i * stepDelay
+      );
+      animationTimeoutsRef.current.push(timeoutId);
+    }
+  };
 
   useEffect(() => {
-    for (let i = 0; i < 1 + NAV_ITEMS.length; ++i) {
-      setTimeout(() => setAnimIdx(i), START_DELAY + i * STEP_DELAY);
-    }
+    triggerAnimations(3000, 300);
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsStartNavbarDelayed(isStartNavbar);
+    }, 1000);
+  }, [isStartNavbar]);
 
   const handleLink = (event, targetID) => {
     event.preventDefault();
@@ -20,24 +43,29 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
   };
 
   return (
-    <Box
-      sx={{
-        position: 'fixed',
-        width: '100%',
-        height: `${(winHeight - INTRO_VID_ASPECT * winWidth) / 2}px`,
-        minHeight: '10vh',
-        backgroundColor: '#fff',
-      }}
-    >
+    <>
       <Box
         sx={{
-          display: 'flex',
-          alignContent: 'center',
-          alignItems: 'center',
-          height: '100%',
+          translate: !isStartNavbar && isNavbarCollapsed ? '0 -100%' : '0',
+          zIndex: isStartNavbar ? 0 : 2,
+          transition: isStartNavbarDelayed
+            ? ''
+            : `translate ${isNavbarCollapsed ? 1.2 : 0.8}s ease-in-out`,
+          position: 'fixed',
+          width: '100%',
+          height: `${(winHeight - INTRO_VID_ASPECT * winWidth) / 2}px`,
+          minHeight: '10vh',
+          backgroundColor: '#fff',
         }}
       >
-        <Container>
+        <Box
+          sx={{
+            display: 'flex',
+            alignContent: 'center',
+            alignItems: 'center',
+            height: '100%',
+          }}
+        >
           <Typography
             variant='p'
             fontWeight='bold'
@@ -47,17 +75,20 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
               top: animIdx >= 0 ? 0 : '16px',
               opacity: animIdx >= 0 ? 1 : 0,
               transition: 'opacity 1s ease-in-out, top 1s ease',
+              marginLeft: '15vw',
             }}
           >
             BEN PETERSON
           </Typography>
           <Box
             sx={{
-              width: '40%',
               display: 'flex',
               justifyContent: 'space-around',
               float: 'right',
-              opacity: 'q',
+              marginLeft: 'auto',
+              marginRight: 'calc(100px + 7vw)',
+              width: '20vw',
+              minWidth: '280px',
             }}
           >
             {NAV_ITEMS.map((item, idx) => (
@@ -76,7 +107,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                   top: animIdx >= idx + 1 ? 0 : '16px',
                   opacity: animIdx >= idx + 1 ? 1 : 0,
                   transition:
-                    'letter-spacing 0.3s, opacity 1s ease-in-out, top 1s ease',
+                    'letter-spacing 0.3s, opacity 0.5s ease-in-out, top 1s ease',
                   '&:hover': {
                     fontWeight: '800',
                     letterSpacing: 0,
@@ -87,9 +118,17 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
               </Typography>
             ))}
           </Box>
-        </Container>
+        </Box>
       </Box>
-    </Box>
+      <NavbarCollapser
+        winHeight={winHeight}
+        winWidth={winWidth}
+        isNavbarCollapsed={isNavbarCollapsed}
+        triggerAnimations={triggerAnimations}
+        setIsNavbarCollapsed={setIsNavbarCollapsed}
+        setIsStartNavbar={setIsStartNavbar}
+      />
+    </>
   );
 };
 

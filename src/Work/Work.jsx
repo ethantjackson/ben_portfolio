@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import WorkPreviewCard from './WorkPreviewCard';
 import { SCROLL_TIME_MS } from '../constants';
 import { PROJECTS_INFO } from '../ProjectsInfo';
+// import Lottie from 'lottie-react';
+// import workTextAnimation from '../LottieAnimations/WorkText.json';
 
 const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
   const [animStarted, setAnimStarted] = useState(false);
@@ -44,6 +46,8 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
       >
         <Grid container justifyContent='center'>
           <Grid item xs={3} sx={{ textAlign: 'left' }}>
+            {/* Lottie animation POC */}
+            {/* <Lottie animationData={workTextAnimation} loop={true} /> */}
             <Typography
               variant='h3'
               sx={{

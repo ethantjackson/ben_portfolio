@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { scroller } from 'react-scroll';
 import { SCROLL_TIME_MS } from './constants';
 import Contact from './Contact/Contact';
+import Experimentation from './Experimentation/Experimentation';
 
 function App() {
   const [winWidth, setWinWidth] = useState(window.innerWidth);
@@ -13,6 +14,14 @@ function App() {
   const isScrolling = useRef(false);
 
   const scrollTo = (targetID) => {
+    if (targetID === '#EXPERIMENTATION') {
+      const experimentationPage = document.getElementById(targetID);
+      if (experimentationPage) {
+        experimentationPage.style.top = '0';
+      }
+      return;
+    }
+
     if (isScrolling.current) return;
     setScrollTarget(targetID);
     isScrolling.current = true;
@@ -65,6 +74,7 @@ function App() {
         winWidth={winWidth}
       />
       <Contact />
+      <Experimentation />
     </div>
   );
 }
