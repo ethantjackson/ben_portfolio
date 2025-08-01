@@ -7,12 +7,12 @@ const Experimentation = () => {
     <Box
       id='#EXPERIMENTATION'
       sx={{
-        top: '100vh',
+        // top: '100vh',
         backgroundColor: '#fff',
         width: '100vw',
         height: '100vh',
-        position: 'fixed',
-        transition: `top ${SCROLL_TIME_MS / 1000}s ease-in-out`,
+        // position: 'fixed',
+        // transition: `top ${SCROLL_TIME_MS / 1000}s ease-in-out`,
       }}
     >
       <Container sx={{ maxWidth: 'calc(100% - 200px) !important' }}>

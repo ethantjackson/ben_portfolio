@@ -6,6 +6,7 @@ import { scroller } from 'react-scroll';
 import { SCROLL_TIME_MS } from './constants';
 import Contact from './Contact/Contact';
 import Experimentation from './Experimentation/Experimentation';
+import FadeInOut from './Transitions/FadeInOut';
 
 function App() {
   const [winWidth, setWinWidth] = useState(window.innerWidth);
@@ -14,19 +15,23 @@ function App() {
   const isScrolling = useRef(false);
 
   const scrollTo = (targetID) => {
-    if (targetID === '#EXPERIMENTATION') {
-      const experimentationPage = document.getElementById(targetID);
-      if (experimentationPage) {
-        experimentationPage.style.top = '0';
-      }
-      return;
-    }
+    // if (targetID === '#EXPERIMENTATION') {
+    //   const experimentationPage = document.getElementById(targetID);
+    //   if (experimentationPage) {
+    //     experimentationPage.style.top = '0';
+    //   }
+    //   return;
+    // }
 
     if (isScrolling.current) return;
     setScrollTarget(targetID);
-    isScrolling.current = true;
-    scroller.scrollTo(targetID);
-    setTimeout(() => (isScrolling.current = false), SCROLL_TIME_MS);
+    setTimeout(() => {
+      isScrolling.current = true;
+      scroller.scrollTo(targetID);
+      setTimeout(() => {
+        isScrolling.current = false;
+      }, SCROLL_TIME_MS);
+    }, 100);
   };
 
   useEffect(() => {
@@ -68,13 +73,20 @@ function App() {
     <div>
       <IntroNav winHeight={winHeight} winWidth={winWidth} scrollTo={scrollTo} />
       <IntroSplash winHeight={winHeight} />
+      {/* {scrollTarget !== '#EXPERIMENTATION' && ( */}
       <Work
         isScrollingToWork={scrollTarget !== ''}
         winHeight={winHeight}
         winWidth={winWidth}
       />
-      <Contact />
-      <Experimentation />
+      <FadeInOut isFadeIn={scrollTarget !== '#EXPERIMENTATION'}>
+        <Contact />
+      </FadeInOut>
+      {/* )} */}
+      <FadeInOut isFadeIn={scrollTarget === '#EXPERIMENTATION'}>
+        {/* {scrollTarget === '#EXPERIMENTATION' && <Experimentation />} */}
+        <Experimentation />
+      </FadeInOut>
     </div>
   );
 }

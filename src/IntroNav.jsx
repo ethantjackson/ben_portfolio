@@ -96,7 +96,10 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                 key={item}
                 component='a'
                 href={`#{${item}}`}
-                onClick={(e) => handleLink(e, `#${item}`)}
+                onClick={(e) => {
+                  handleLink(e, `#${item}`);
+                  setIsNavbarCollapsed(true);
+                }}
                 sx={{
                   textDecoration: 'none',
                   color: 'inherit',

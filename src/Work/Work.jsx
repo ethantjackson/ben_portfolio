@@ -89,8 +89,8 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
             const isWide = idx % 4 === 0 || idx % 4 === 3;
             const widthFraction = isWide ? 21 / 37 : 16 / 37;
             let fadeInDelay = idx % 2 === 0 ? 300 : 500;
-            if (idx === 2) fadeInDelay = 500;
-            if (idx === 3) fadeInDelay = 800;
+            // if (idx === 2) fadeInDelay = 500;
+            // if (idx === 3) fadeInDelay = 800;
 
             return (
               <Grid

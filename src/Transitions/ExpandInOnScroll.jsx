@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box } from '@mui/material';
 import { SCROLL_TIME_MS } from '../constants';
+import { Zoom } from '@mui/material';
 
-const FadeInOnScroll = ({
+const ExpandInOnScroll = ({
   children,
   offset = 50,
   duration = 800,
   delay = 500,
-  translate = 30,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
@@ -54,19 +53,10 @@ const FadeInOnScroll = ({
   }, [delay, offset, isVisible]);
 
   return (
-    <Box
-      ref={containerRef}
-      sx={{
-        display: 'inline',
-        height: '100%',
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0px)' : `translateY(${translate}px)`,
-        transition: `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`,
-      }}
-    >
+    <Zoom ref={containerRef} timeout={duration} in={isVisible}>
       {children}
-    </Box>
+    </Zoom>
   );
 };
 
-export default FadeInOnScroll;
+export default ExpandInOnScroll;
