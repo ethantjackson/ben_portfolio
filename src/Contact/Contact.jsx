@@ -67,9 +67,9 @@ const Contact = () => {
                   sx={{
                     fontSize: '50pt',
                     cursor: 'pointer',
-                    transition: '0.3s',
                     '&:hover': {
-                      transform: 'scale(1.1)',
+                      transform: 'scale(1.1) !important',
+                      transition: '0.3s !important',
                     },
                   }}
                 />
@@ -79,9 +79,9 @@ const Contact = () => {
                   sx={{
                     fontSize: '52pt',
                     cursor: 'pointer',
-                    transition: '0.3s',
                     '&:hover': {
-                      transform: 'scale(1.1)',
+                      transform: 'scale(1.1) !important',
+                      transition: '0.3s !important',
                     },
                   }}
                 />
@@ -90,9 +90,9 @@ const Contact = () => {
                 <Box
                   sx={{
                     cursor: 'pointer',
-                    transition: '0.3s',
                     '&:hover': {
-                      transform: 'scale(1.1)',
+                      transform: 'scale(1.1) !important',
+                      transition: '0.3s !important',
                     },
                     display: 'inline-flex',
                     alignContent: 'center',

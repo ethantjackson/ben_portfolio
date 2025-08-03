@@ -97,7 +97,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                 component='a'
                 href={`#{${item}}`}
                 onClick={(e) => {
-                  handleLink(e, `#${item}`);
+                  handleLink(e, item);
                   setIsNavbarCollapsed(true);
                 }}
                 sx={{
