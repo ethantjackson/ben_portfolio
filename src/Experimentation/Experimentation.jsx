@@ -50,7 +50,9 @@ const Experimentation = () => {
         <Grid container spacing={3} alignItems='center' justifyContent='center'>
           {EXPERIMENTS_INFO.map((info, index) => (
             <Grid item xs={info.width} key={index}>
-              <img width='100%' alt='ProjectImage' src={info.url} />
+              <FadeInOnScroll delay={0} offset={0} translate={100}>
+                <img width='100%' alt='ProjectImage' src={info.url} />
+              </FadeInOnScroll>
             </Grid>
           ))}
         </Grid>

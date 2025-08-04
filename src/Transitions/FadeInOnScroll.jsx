@@ -8,6 +8,7 @@ const FadeInOnScroll = ({
   duration = 800,
   delay = 500,
   translate = 30,
+  inline = false,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
@@ -35,7 +36,7 @@ const FadeInOnScroll = ({
         const rect = containerRef.current.getBoundingClientRect();
         const isAboveViewport = rect.bottom < 0;
         const isInView =
-          rect.top < window.innerHeight - offset && rect.bottom > 0;
+          rect.top < window.innerHeight - offset - translate && rect.bottom > 0;
 
         if (isInView || isAboveViewport) {
           setTimeout(() => {
@@ -51,13 +52,13 @@ const FadeInOnScroll = ({
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [delay, offset, isVisible]);
+  }, [delay, offset, isVisible, translate]);
 
   return (
     <Box
       ref={containerRef}
       sx={{
-        display: 'inline',
+        display: inline ? 'inline' : 'block',
         height: '100%',
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0px)' : `translateY(${translate}px)`,

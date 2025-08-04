@@ -49,7 +49,7 @@ const Contact = () => {
             </FadeInOnScroll>
           </Grid>
           <Grid item xs sx={{ textAlign: 'justify' }}>
-            <FadeInOnScroll offset={100} delay={800} translate={0}>
+            <FadeInOnScroll offset={100} delay={800} translate={0} inline>
               <Typography variant='h5' mb={5}>
                 Email: bcpeters100@gmail.com
               </Typography>

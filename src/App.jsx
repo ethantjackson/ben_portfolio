@@ -45,14 +45,14 @@ function App() {
         [targetID]: true,
       };
       // Delay callback until after render is scheduled
-      setTimeout(() => callback?.(), 0);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          callback?.();
+        });
+      });
       return newState;
     });
   };
-
-  useEffect(() => {
-    console.log(inStatusMap);
-  }, [inStatusMap]);
 
   const scrollTo = (targetID) => {
     const isInSamePage =
