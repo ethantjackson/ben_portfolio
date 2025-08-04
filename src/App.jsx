@@ -59,27 +59,30 @@ function App() {
       [WORK, CONTACT].includes(scrollTarget) &&
       [WORK, CONTACT].includes(targetID);
     if (!isInSamePage) updateNonTargetStatus(setInStatusMap, targetID);
-    setTimeout(() => {
-      if (isScrolling.current) return;
-      if (!isInSamePage)
-        updateTargetStatus(setEnabledStatusMap, targetID, () => {
-          scroller.scrollTo(`#${targetID}`);
-        });
-      else scroller.scrollTo(`#${targetID}`);
+    setTimeout(
+      () => {
+        if (isScrolling.current) return;
+        if (!isInSamePage)
+          updateTargetStatus(setEnabledStatusMap, targetID, () => {
+            scroller.scrollTo(`#${targetID}`);
+          });
+        else scroller.scrollTo(`#${targetID}`);
 
-      setScrollTarget(targetID);
+        setScrollTarget(targetID);
 
-      setTimeout(() => {
-        isScrolling.current = true;
         setTimeout(() => {
-          isScrolling.current = false;
-          if (!isInSamePage) {
-            updateTargetStatus(setInStatusMap, targetID);
-            updateNonTargetStatus(setEnabledStatusMap, targetID);
-          }
-        }, SCROLL_TIME_MS);
-      }, 100);
-    }, 500);
+          isScrolling.current = true;
+          setTimeout(() => {
+            isScrolling.current = false;
+            if (!isInSamePage) {
+              updateTargetStatus(setInStatusMap, targetID);
+              updateNonTargetStatus(setEnabledStatusMap, targetID);
+            }
+          }, SCROLL_TIME_MS);
+        }, 100);
+      },
+      scrollTarget ? 500 : 0
+    );
   };
 
   useEffect(() => {
@@ -99,15 +102,17 @@ function App() {
       );
     };
 
-    window.scrollTo({ top: 0 });
-    window.addEventListener('wheel', handleScroll, { passive: false });
+    if (!scrollTarget)
+      window.addEventListener('wheel', handleScroll, { passive: false });
     return () => {
       window.removeEventListener('wheel', handleScroll);
     };
     // eslint-disable-next-line
-  }, []);
+  }, [scrollTarget]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0 });
+
     const handleResize = () => {
       setWinWidth(window.innerWidth);
       setWinHeight(window.innerHeight);

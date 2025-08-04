@@ -1,6 +1,6 @@
 const FadeInOut = ({ isFadeIn, duration = 500, children }) => {
   return (
-    <div style={{ position: 'relative', overflow: 'hidden' }}>
+    <div style={{ position: 'relative' }}>
       {children}
       <div
         style={{

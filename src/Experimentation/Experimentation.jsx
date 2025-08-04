@@ -16,12 +16,13 @@ const Experimentation = () => {
     >
       <Container sx={{ maxWidth: 'calc(100% - 200px) !important' }}>
         <Grid container justifyContent='center'>
-          <Grid item xs={3} sx={{ textAlign: 'left' }}>
+          <Grid item xs={5} xl={3} sx={{ textAlign: 'left' }}>
             <FadeInOnScroll offset={100} delay={200} translate={0}>
-              <Typography variant='h3'>Experimentation + Stills</Typography>
+              <Typography variant='h3'>Experimentation</Typography>
+              <Typography variant='h3'>+ Stills</Typography>
             </FadeInOnScroll>
           </Grid>
-          <Grid item xs sx={{ textAlign: 'justify' }} pl={3}>
+          <Grid item xs sx={{ textAlign: 'justify' }}>
             <FadeInOnScroll offset={100} delay={400} translate={0}>
               <Typography variant='h5'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
