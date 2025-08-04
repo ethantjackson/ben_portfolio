@@ -2,6 +2,7 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import FadeInOnScroll from '../Transitions/FadeInOnScroll';
 import ExpandInOnScroll from '../Transitions/ExpandInOnScroll';
+import { EXPERIMENTS_INFO } from '../BEN_UPDATE_INFO_HERE/ExperimentsInfo';
 
 const Experimentation = () => {
   return (
@@ -44,6 +45,14 @@ const Experimentation = () => {
               }}
             />
           </ExpandInOnScroll>
+        </Grid>
+
+        <Grid container spacing={3} alignItems='center' justifyContent='center'>
+          {EXPERIMENTS_INFO.map((info, index) => (
+            <Grid item xs={info.width} key={index}>
+              <img width='100%' alt='ProjectImage' src={info.url} />
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </Box>

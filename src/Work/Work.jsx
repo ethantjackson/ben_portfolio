@@ -2,7 +2,7 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import WorkPreviewCard from './WorkPreviewCard';
 import { SCROLL_TIME_MS } from '../constants';
-import { PROJECTS_INFO } from '../ProjectsInfo';
+import { PROJECTS_INFO } from '../BEN_UPDATE_INFO_HERE/ProjectsInfo';
 // import Lottie from 'lottie-react';
 // import workTextAnimation from '../LottieAnimations/WorkText.json';
 

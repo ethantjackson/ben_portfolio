@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import React from 'react';
-import { CONTENT_TYPE } from '../ProjectsInfo';
+import { CONTENT_TYPE } from '../BEN_UPDATE_INFO_HERE/ProjectsInfo';
 import _ from 'lodash';
 
 const ProjectDetails = ({
