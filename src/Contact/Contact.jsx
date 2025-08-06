@@ -55,7 +55,7 @@ const Contact = () => {
               delay={1000}
             />
           </Grid>
-          <Grid item xs sx={{ textAlign: 'justify' }}>
+          <Grid item xs pl={2} sx={{ textAlign: 'justify' }}>
             <FadeInOnScroll offset={100} delay={800} translate={0} inline>
               <Typography variant='h5' mb={5}>
                 Email: bcpeters100@gmail.com
