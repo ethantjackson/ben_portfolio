@@ -3,12 +3,11 @@ import React, { useEffect, useState } from 'react';
 import WorkPreviewCard from './WorkPreviewCard';
 import { SCROLL_TIME_MS } from '../constants';
 import { PROJECTS_INFO } from '../BEN_UPDATE_INFO_HERE/ProjectsInfo';
-// import Lottie from 'lottie-react';
-// import workTextAnimation from '../LottieAnimations/WorkText.json';
+import workTextAnimation from '../LottieAnimations/Work_TextAnim.json';
+import AnimateInView from '../LottieAnimations/AnimateInView';
 
 const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
   const [animStarted, setAnimStarted] = useState(false);
-  const [titleOpacity, setTitleOpacity] = useState(0);
   const [descriptionOpacity, setDescriptionOpacity] = useState(0);
   const [dividerWidth, setDividerWidth] = useState(0);
 
@@ -16,9 +15,6 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
     if (animStarted) return;
     setAnimStarted(true);
 
-    setTimeout(() => {
-      setTitleOpacity(1);
-    }, SCROLL_TIME_MS * 0.5);
     setTimeout(() => {
       setDescriptionOpacity(1);
     }, SCROLL_TIME_MS * 0.3);
@@ -46,17 +42,10 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
       >
         <Grid container justifyContent='center'>
           <Grid item xs={3} sx={{ textAlign: 'left' }}>
-            {/* Lottie animation POC */}
-            {/* <Lottie animationData={workTextAnimation} loop={true} /> */}
-            <Typography
-              variant='h3'
-              sx={{
-                opacity: titleOpacity,
-                transition: 'opacity 0.7s ease-in-out',
-              }}
-            >
-              WORK
-            </Typography>
+            <AnimateInView
+              animationData={workTextAnimation}
+              style={{ height: '45px', marginTop: '8px' }}
+            />
           </Grid>
           <Grid item xs sx={{ textAlign: 'justify' }}>
             <Typography

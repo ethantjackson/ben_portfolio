@@ -3,6 +3,8 @@ import React from 'react';
 import FadeInOnScroll from '../Transitions/FadeInOnScroll';
 import ExpandInOnScroll from '../Transitions/ExpandInOnScroll';
 import { EXPERIMENTS_INFO } from '../BEN_UPDATE_INFO_HERE/ExperimentsInfo';
+import AnimateInView from '../LottieAnimations/AnimateInView';
+import experimentationTextAnimation from '../LottieAnimations/ExperimentationStills_TextAnim_shapes.json';
 
 const Experimentation = () => {
   return (
@@ -18,10 +20,14 @@ const Experimentation = () => {
       <Container sx={{ maxWidth: 'calc(100% - 200px) !important' }}>
         <Grid container justifyContent='center'>
           <Grid item xs={5} xl={3} sx={{ textAlign: 'left' }}>
-            <FadeInOnScroll offset={100} delay={200} translate={0}>
+            {/* <FadeInOnScroll offset={100} delay={200} translate={0}>
               <Typography variant='h3'>Experimentation</Typography>
               <Typography variant='h3'>+ Stills</Typography>
-            </FadeInOnScroll>
+            </FadeInOnScroll> */}
+            <AnimateInView
+              animationData={experimentationTextAnimation}
+              style={{ height: '78px', paddingRight: '10px' }}
+            />
           </Grid>
           <Grid item xs sx={{ textAlign: 'justify' }}>
             <FadeInOnScroll offset={100} delay={400} translate={0}>

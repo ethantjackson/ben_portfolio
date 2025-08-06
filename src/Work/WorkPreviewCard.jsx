@@ -133,7 +133,7 @@ const WorkPreviewCard = ({
         onMouseLeave={() => setHovering(false)}
         ref={cardRef}
       >
-        <FadeInOnScroll delay={fadeInDelay}>
+        <FadeInOnScroll delay={fadeInDelay} offset={0}>
           <Box
             ref={modalRef}
             sx={{
