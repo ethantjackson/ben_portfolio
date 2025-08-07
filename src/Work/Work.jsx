@@ -91,11 +91,11 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
                 }}
               >
                 <WorkPreviewCard
-                  videoURL={project.previewURL}
+                  thumbnailURL={project.thumbnailURL}
+                  thumbnailTimeSeconds={project.thumbnailTimeSeconds}
                   projectName={project.title}
                   projectDescription={project.description}
                   detailsContent={project.detailsContent}
-                  thumbnailTimeSeconds={project.thumbnailTimeSeconds}
                   projectCredits={project.credits}
                   winWidth={winWidth}
                   winHeight={winHeight}

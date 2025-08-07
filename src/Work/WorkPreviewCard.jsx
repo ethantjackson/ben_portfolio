@@ -6,13 +6,14 @@ import DimOverlay from '../Components/DimOverlay';
 import ProjectDetails from './ProjectDetails';
 // import SeeMoreIndicator from './SeeMoreIndicator';
 import FadeInOnScroll from '../Transitions/FadeInOnScroll';
+import PreviewVideo from './PreviewVideo';
 
 const WorkPreviewCard = ({
-  videoURL,
+  thumbnailURL,
+  thumbnailTimeSeconds,
   projectName,
   projectDescription,
   detailsContent,
-  thumbnailTimeSeconds,
   projectCredits,
   winWidth,
   winHeight,
@@ -25,7 +26,6 @@ const WorkPreviewCard = ({
   const [leftPos, setLeftPos] = useState(0);
   const [topPos, setTopPos] = useState(0);
   const timeoutRef = useRef(null);
-  const videoRef = useRef(null);
   const cardRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -81,14 +81,6 @@ const WorkPreviewCard = ({
 
     if (detailModalOpen) {
       document.body.style.overflow = 'hidden';
-      // setTimeout(() => {
-      //   if (modalRef.current) {
-      //     modalRef.current.scrollTo({
-      //       top: winHeight * 0.9 + 10,
-      //       behavior: 'smooth',
-      //     });
-      //   }
-      // }, MODAL_ANIM_TIME_MS);
     } else {
       document.body.style.overflow = 'auto';
       if (modalRef.current) {
@@ -98,19 +90,12 @@ const WorkPreviewCard = ({
   }, [detailModalOpen, winHeight]);
 
   useEffect(() => {
-    if (hovering || detailModalOpen) {
-      videoRef.current?.play();
-    } else {
-      videoRef.current?.pause();
-      videoRef.current.currentTime = thumbnailTimeSeconds;
-    }
-
     setShowText(hovering);
     if (hovering) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => setShowText(false), 2000);
     }
-  }, [hovering, thumbnailTimeSeconds, detailModalOpen]);
+  }, [hovering]);
 
   return (
     <>
@@ -191,37 +176,33 @@ const WorkPreviewCard = ({
                 />
               </Box>
             )}
-            <video
-              ref={videoRef}
-              loop
-              muted
-              style={{
-                width: '100%',
-                // height: '100%',
-                objectFit: 'cover',
-                height: detailModalOpen ? '0' : '100%',
-                transition: `${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
-              }}
-            >
-              <source src={videoURL} type='video/mp4' />
-              Your browser does not support the video tag.
-            </video>
+
+            <PreviewVideo
+              src={thumbnailURL}
+              play={hovering || detailModalOpen}
+              seekTime={thumbnailTimeSeconds}
+              hidden={detailModalOpen}
+            />
 
             {/* {detailModalOpen && <SeeMoreIndicator modalRef={modalRef} />} */}
             <Box
               sx={{
-                opacity: detailModalOpenDelayed ? 1 : 0,
+                opacity: detailModalOpen && detailModalOpenDelayed ? 1 : 0,
                 transition: `opacity ${detailModalOpen ? 2 : 0.3}s`,
               }}
             >
-              <ProjectDetails
-                projectName={projectName}
-                projectDescription={projectDescription}
-                detailsContent={detailsContent}
-                projectCredits={projectCredits}
-              />
+              {(detailModalOpen || detailModalOpenDelayed) && (
+                <ProjectDetails
+                  projectName={projectName}
+                  projectDescription={projectDescription}
+                  detailsContent={detailsContent}
+                  projectCredits={projectCredits}
+                />
+              )}
             </Box>
           </Box>
+
+          {/* Preview card title */}
           <Box
             display='flex'
             justifyContent='center'

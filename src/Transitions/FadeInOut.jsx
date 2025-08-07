@@ -1,4 +1,13 @@
-const FadeInOut = ({ isFadeIn, duration = 500, children }) => {
+import { useEffect, useState } from 'react';
+
+const FadeInOut = ({ isFadeIn, duration = 500, children, delay = 0 }) => {
+  const [isFadeInWithDelay, setIsFadeInWithDelay] = useState(isFadeIn);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsFadeInWithDelay(isFadeIn);
+    }, delay);
+  }, [isFadeIn, delay]);
+
   return (
     <div style={{ position: 'relative' }}>
       {children}
@@ -8,7 +17,7 @@ const FadeInOut = ({ isFadeIn, duration = 500, children }) => {
           inset: 0,
           backgroundColor: 'white',
           pointerEvents: 'none',
-          opacity: isFadeIn ? 0 : 1,
+          opacity: isFadeInWithDelay ? 0 : 1,
           transition: `opacity ${duration}ms ease`,
           zIndex: 1,
         }}

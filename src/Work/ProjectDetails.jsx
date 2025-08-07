@@ -2,6 +2,9 @@ import { Grid, Typography } from '@mui/material';
 import React from 'react';
 import { CONTENT_TYPE } from '../BEN_UPDATE_INFO_HERE/ProjectsInfo';
 import _ from 'lodash';
+import ExpandInOnScroll from '../Transitions/ExpandInOnScroll';
+import FadeInOnScroll from '../Transitions/FadeInOnScroll';
+import VimeoPlayer from '../Vimeo/VimeoPlayer';
 
 const ProjectDetails = ({
   projectName,
@@ -14,27 +17,46 @@ const ProjectDetails = ({
       container
       justifyContent='center'
       sx={{
-        width: '70%',
-        marginLeft: '15%',
+        width: '80%',
+        marginLeft: '10%',
         paddingTop: '3rem',
         paddingBottom: '5rem',
       }}
     >
       <Grid item xs={4} sx={{ textAlign: 'left' }}>
-        <Typography variant='h3'>{projectName}</Typography>
+        <FadeInOnScroll offset={100} delay={0} translate={0}>
+          <Typography variant='h3'>{projectName}</Typography>
+        </FadeInOnScroll>
       </Grid>
       <Grid item xs={8} sx={{ textAlign: 'justify' }}>
-        <Typography variant='h6'>{projectDescription}</Typography>
+        <FadeInOnScroll offset={100} delay={100} translate={0}>
+          <Typography variant='h6'>{projectDescription}</Typography>
+        </FadeInOnScroll>
       </Grid>
 
-      <Grid
-        container
-        spacing={3}
-        alignItems='center'
-        justifyContent='center'
-        mt={1}
-      >
+      <ExpandInOnScroll offset={100} delay={200}>
+        <Grid
+          item
+          mt={6}
+          mb={6}
+          ml={'10%'}
+          sx={{
+            height: '2px',
+            background: 'black',
+            width: '80%',
+          }}
+        />
+      </ExpandInOnScroll>
+
+      <Grid container spacing={3} alignItems='center' justifyContent='center'>
         {detailsContent.map((content, index) => {
+          if (content.contentType === CONTENT_TYPE.VIDEO_EMBED) {
+            return (
+              <Grid item xs={content.width} key={index}>
+                <VimeoPlayer vimeoID={content.vimeoID} />
+              </Grid>
+            );
+          }
           if (content.contentType === CONTENT_TYPE.STYLEFRAME) {
             return (
               <Grid item xs={content.width} key={index}>

@@ -1,24 +1,40 @@
-import { Box } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
+import { Box } from '@mui/material';
+import Player from '@vimeo/player';
 
-const IntroSplash = ({ winHeight }) => {
+const IntroSplash = () => {
   const [opacity, setOpacity] = useState(0);
-  const videoRef = useRef(null);
+  const iframeRef = useRef(null);
+  const playerRef = useRef(null);
 
   useEffect(() => {
-    setTimeout(() => setOpacity(1), 500);
+    // Fade in effect
+    const fadeIn = setTimeout(() => setOpacity(1), 500);
 
-    const pauseVideoWhenHidden = () => {
-      if (window.scrollY >= window.innerHeight) {
-        videoRef?.current?.pause();
+    // Initialize Vimeo player
+    if (iframeRef.current) {
+      playerRef.current = new Player(iframeRef.current, {
+        autoplay: true,
+        muted: true,
+        loop: true,
+        background: true,
+      });
+    }
+
+    // Scroll listener to pause/play
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      if (scrollY > window.innerHeight && playerRef.current) {
+        playerRef.current.pause();
       } else {
-        videoRef?.current?.play();
+        playerRef.current.play();
       }
     };
-    window.addEventListener('scrollend', pauseVideoWhenHidden);
 
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scrollend', pauseVideoWhenHidden);
+      clearTimeout(fadeIn);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -27,32 +43,32 @@ const IntroSplash = ({ winHeight }) => {
       <Box
         sx={{
           height: '100vh',
+          width: '100%',
           position: 'fixed',
           top: 0,
           left: 0,
-          overflow: 'hidden',
-          backgroundColor: '#fff',
           zIndex: -2,
+          overflow: 'hidden',
         }}
       >
-        <video
-          autoPlay
-          ref={videoRef}
-          loop
-          muted
+        <iframe
+          ref={iframeRef}
+          src='https://player.vimeo.com/video/1107644434?h=6d77c5130d&autoplay=1&muted=1&loop=1&background=1'
+          frameBorder='0'
+          allow='autoplay; fullscreen; picture-in-picture'
+          allowFullScreen
+          title='Intro Video'
           style={{
             width: '100%',
             height: '100%',
             opacity: opacity,
             transition: 'opacity 3s ease-in-out',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            pointerEvents: 'none',
           }}
-        >
-          <source
-            src='https://res.cloudinary.com/workoutcloud/video/upload/v1721628080/ThatWhichWeLeftBehindWide_v3fvqe.mp4'
-            type='video/mp4'
-          />
-          Your browser does not support the video tag.
-        </video>
+        />
       </Box>
       <Box sx={{ height: '100vh' }} />
     </>
