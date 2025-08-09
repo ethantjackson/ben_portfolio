@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Lottie from 'lottie-react';
 
-const AnimateForwardReverse = ({ isAnimateIn, animationData, style = {} }) => {
+const AnimateForwardReverse = ({
+  isAnimateIn,
+  animationData,
+  forwardSpeed = 1,
+  backSpeed = 1,
+  style = {},
+}) => {
   const lottieRef = useRef();
   const [initialized, setInitialized] = useState(false);
 
@@ -19,15 +25,15 @@ const AnimateForwardReverse = ({ isAnimateIn, animationData, style = {} }) => {
 
     const instance = lottieRef.current;
     if (isAnimateIn) {
-      instance.setSpeed(1);
+      instance.setSpeed(forwardSpeed);
       instance.setDirection(1);
       instance.goToAndPlay(0, true);
     } else {
-      instance.setSpeed(3);
+      instance.setSpeed(backSpeed);
       instance.setDirection(-1);
       instance.play();
     }
-  }, [isAnimateIn, initialized]);
+  }, [isAnimateIn, initialized, forwardSpeed, backSpeed]);
 
   const handleComplete = () => {
     if (!lottieRef.current) return;

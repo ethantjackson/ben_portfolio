@@ -86,6 +86,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
           <AnimateForwardReverse
             isAnimateIn={animIdx >= 0}
             animationData={signatureAnimation}
+            backSpeed={3}
             style={{
               height: '80%',
               position: 'relative',

@@ -1,7 +1,7 @@
 import { Box, Fade } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { INTRO_VID_ASPECT, SCROLL_TIME_MS } from '../constants';
-import menuIconAnimation from '../LottieAnimations/XAnimation.json';
+import menuIconAnimation from '../LottieAnimations/XAnimation_v3.json';
 import AnimateForwardReverse from '../LottieAnimations/AnimateForwardReverse';
 
 const NavbarCollapser = ({
