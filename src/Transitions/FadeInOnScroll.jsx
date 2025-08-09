@@ -36,7 +36,7 @@ const FadeInOnScroll = ({
         const rect = containerRef.current.getBoundingClientRect();
         const isAboveViewport = rect.bottom < 0;
         const isInView =
-          rect.top < window.innerHeight - offset - translate && rect.bottom > 0;
+          rect.top < window.innerHeight - offset + translate && rect.bottom > 0;
 
         if (isInView || isAboveViewport) {
           setTimeout(() => {
