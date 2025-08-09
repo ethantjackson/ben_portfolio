@@ -11,12 +11,7 @@ const PreviewVideo = ({ src, play, seekTime = 0, hidden = false }) => {
   useEffect(() => {
     if (!playerRef.current) return;
 
-    if (play) {
-      playerRef.current.play?.();
-    } else {
-      playerRef.current.currentTime = seekTime;
-      playerRef.current.pause?.();
-    }
+    if (!play) playerRef.current.currentTime = seekTime;
   }, [play, seekTime]);
 
   const init = () => {
@@ -49,7 +44,7 @@ const PreviewVideo = ({ src, play, seekTime = 0, hidden = false }) => {
       <ReactPlayer
         ref={playerRef}
         src={src}
-        playing={play}
+        playing={!isMobile && play}
         muted
         loop
         playsInline

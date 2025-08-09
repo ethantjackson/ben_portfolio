@@ -104,22 +104,6 @@ const WorkPreviewCard = ({
     }
   }, [hovering]);
 
-  const touchTimeoutRef = useRef(null);
-
-  const handleTouchStart = (e) => {
-    e.preventDefault();
-    // Start a timer to set hovering true if held for 500ms
-    touchTimeoutRef.current = setTimeout(() => {
-      setHovering(true);
-    }, 500);
-  };
-
-  const handleTouchEnd = () => {
-    // If touch ends before 500ms, cancel the timer and reset hovering
-    clearTimeout(touchTimeoutRef.current);
-    setHovering(false);
-  };
-
   return (
     <>
       <DimOverlay active={detailModalOpen} />
@@ -137,11 +121,12 @@ const WorkPreviewCard = ({
             setDetailModalOpen(!detailModalOpen);
           }
         }}
-        onMouseEnter={() => setHovering(true)}
+        onMouseEnter={() => {
+          if (!isMobile) {
+            setHovering(true);
+          }
+        }}
         onMouseLeave={() => setHovering(false)}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}
         ref={cardRef}
       >
         <FadeInOnScroll delay={fadeInDelay} offset={0}>
