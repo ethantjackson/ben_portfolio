@@ -1,38 +1,67 @@
-import React, { useEffect, useRef } from 'react';
+import { useMediaQuery, useTheme } from '@mui/material';
+import React, { useRef, useEffect } from 'react';
+import ReactPlayer from 'react-player';
 
 const PreviewVideo = ({ src, play, seekTime = 0, hidden = false }) => {
-  const videoRef = useRef(null);
+  const playerRef = useRef(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  // Seek to desired time when not playing
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    if (!playerRef.current) return;
 
     if (play) {
-      video.play().catch(() => {});
+      playerRef.current.play?.();
     } else {
-      video.pause();
-      video.currentTime = seekTime;
+      playerRef.current.currentTime = seekTime;
+      playerRef.current.pause?.();
     }
   }, [play, seekTime]);
 
+  const init = () => {
+    if (!playerRef.current) return;
+    playerRef.current.currentTime = seekTime;
+    playerRef.current.pause?.();
+  };
+
+  const getCloudinaryThumbnail = (videoUrl, timestamp) => {
+    if (!videoUrl) throw new Error('Video URL is required');
+
+    // Ensure timestamp is in Cloudinary format (so_<seconds>)
+    const ts = `so_${timestamp}`;
+
+    // Insert the transformation right after `/upload/`
+    return videoUrl
+      .replace('/upload/', `/upload/${ts}/`)
+      .replace(/\.(mp4|mov|webm)$/i, '.jpg');
+  };
+
   return (
-    <video
-      ref={videoRef}
-      loop
-      muted
-      playsInline
-      webkit-playsinline='true'
-      poster='https://res.cloudinary.com/workoutcloud/image/upload/v1726534625/instaStill1_wa0f4y.png'
+    <div
       style={{
         width: '100%',
         height: hidden ? '0' : '100%',
-        objectFit: 'cover',
+        overflow: 'hidden',
         transition: '0.5s ease-in-out',
       }}
     >
-      <source src={src} type='video/mp4' />
-      Your browser does not support the video tag.
-    </video>
+      <ReactPlayer
+        ref={playerRef}
+        src={src}
+        playing={play}
+        muted
+        loop
+        playsInline
+        width='100%'
+        height='100%'
+        light={isMobile && getCloudinaryThumbnail(src, seekTime)}
+        style={{
+          objectFit: 'cover',
+        }}
+        onReady={init}
+      />
+    </div>
   );
 };
 
