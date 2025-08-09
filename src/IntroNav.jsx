@@ -33,6 +33,10 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
   };
 
   useEffect(() => {
+    console.log(animIdx);
+  }, [animIdx]);
+
+  useEffect(() => {
     triggerAnimations(3000, 300);
   }, []);
 
@@ -44,6 +48,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
 
   const handleLink = (event, targetID) => {
     event.preventDefault();
+    triggerAnimations(0, 50, true);
     scrollTo(targetID);
   };
 

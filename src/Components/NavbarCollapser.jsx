@@ -36,7 +36,7 @@ const NavbarCollapser = ({
     const handleScroll = () => {
       if (!isNavbarCollapsed) {
         setIsNavbarCollapsed(true);
-        triggerAnimations(0, 0, true);
+        triggerAnimations(0, 50, true);
       }
     };
 
