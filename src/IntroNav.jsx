@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { INTRO_VID_ASPECT, NAV_ITEMS } from './constants';
 import NavbarCollapser from './Components/NavbarCollapser';
 import AnimateForwardReverse from './LottieAnimations/AnimateForwardReverse';
-import signatureAnimation from './LottieAnimations/Signature_Red_v1.json';
+import signatureAnimation from './LottieAnimations/Signature_Red_v2.json';
 
 const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
   const [animIdx, setAnimIdx] = useState(-1);

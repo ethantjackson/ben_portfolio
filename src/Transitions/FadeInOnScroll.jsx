@@ -20,7 +20,7 @@ const FadeInOnScroll = ({
     // Activate scroll detection after delay
     activateTimeout.current = setTimeout(() => {
       isActive.current = true;
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll, { passive: false });
       window.addEventListener('resize', handleScroll);
       handleScroll(); // Initial check
     }, SCROLL_TIME_MS);
