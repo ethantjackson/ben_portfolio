@@ -20,6 +20,8 @@ const PreviewVideo = ({ src, play, seekTime = 0, hidden = false }) => {
       ref={videoRef}
       loop
       muted
+      playsInline
+      webkit-playsinline='true'
       style={{
         width: '100%',
         height: hidden ? '0' : '100%',
