@@ -1,7 +1,8 @@
 import { Box, Fade } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
 import { INTRO_VID_ASPECT, SCROLL_TIME_MS } from '../constants';
+import menuIconAnimation from '../LottieAnimations/XAnimation.json';
+import AnimateForwardReverse from '../LottieAnimations/AnimateForwardReverse';
 
 const NavbarCollapser = ({
   winHeight,
@@ -9,17 +10,16 @@ const NavbarCollapser = ({
   isNavbarCollapsed,
   triggerAnimations,
   setIsNavbarCollapsed,
+  isStartNavbar,
   setIsStartNavbar,
 }) => {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= window.innerHeight - 100) {
-        setEnabled(true);
+      if (window.scrollY >= window.innerHeight - 100 && isStartNavbar) {
         setIsStartNavbar(false);
-        triggerAnimations(0, 0, true);
-        setIsNavbarCollapsed(true);
+        setEnabled(true);
         window.removeEventListener('scroll', handleScroll);
       }
     };
@@ -30,9 +30,27 @@ const NavbarCollapser = ({
       },
       window.scrollY > 0 ? SCROLL_TIME_MS : 0
     );
+  }, [isStartNavbar, setIsStartNavbar]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!isNavbarCollapsed) {
+        setIsNavbarCollapsed(true);
+        triggerAnimations(0, 0, true);
+      }
+    };
+
+    if (!isStartNavbar) {
+      window.addEventListener('scroll', handleScroll);
+    }
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [setIsNavbarCollapsed, setIsStartNavbar, triggerAnimations]);
+  }, [
+    isNavbarCollapsed,
+    isStartNavbar,
+    setIsNavbarCollapsed,
+    triggerAnimations,
+  ]);
 
   if (!enabled) return <></>;
   return (
@@ -42,20 +60,26 @@ const NavbarCollapser = ({
         right: '90px',
         zIndex: '2',
         top: `calc(max(${
-          (winHeight - INTRO_VID_ASPECT * winWidth) / 4 - 18
+          (winHeight - INTRO_VID_ASPECT * winWidth) / 4 - 22
         }px, 5vh - 18px))`,
         cursor: 'pointer',
       }}
       onClick={() => {
         if (isNavbarCollapsed) triggerAnimations(200, 200);
         else {
-          triggerAnimations(0, 100, true);
+          triggerAnimations(0, 50, true);
         }
         setIsNavbarCollapsed(!isNavbarCollapsed);
       }}
     >
-      <Fade in={enabled} timeout={800}>
-        <MenuIcon fontSize='large' />
+      <Fade in={enabled} timeout={3000}>
+        <Box>
+          <AnimateForwardReverse
+            isAnimateIn={!isNavbarCollapsed}
+            animationData={menuIconAnimation}
+            style={{ height: '40px', width: '40px' }}
+          />
+        </Box>
       </Fade>
     </Box>
   );

@@ -139,7 +139,6 @@ export const PROJECTS_INFO = [
   // NIIICE SHOT
   {
     title: 'NIIICE SHOT',
-    thumbnailTimeSeconds: 1,
     thumbnailURL:
       'https://res.cloudinary.com/workoutcloud/video/upload/v1722488890/NiiiceShot_TitleSequence_MAINVideo_m6djde.mp4',
     description:

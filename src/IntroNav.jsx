@@ -2,6 +2,8 @@ import { Box, Typography } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { INTRO_VID_ASPECT, NAV_ITEMS } from './constants';
 import NavbarCollapser from './Components/NavbarCollapser';
+import AnimateForwardReverse from './LottieAnimations/AnimateForwardReverse';
+import signatureAnimation from './LottieAnimations/Signature_Red_v1.json';
 
 const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
   const [animIdx, setAnimIdx] = useState(-1);
@@ -17,7 +19,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
 
     const count = NAV_ITEMS.length;
 
-    for (let i = 0; i <= count; ++i) {
+    for (let i = -1; i <= count; ++i) {
       const index = isReversed ? count - i - 1 : i;
       const timeoutId = setTimeout(
         () => setAnimIdx(index),
@@ -53,7 +55,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
             : `translate ${isNavbarCollapsed ? 1.2 : 0.8}s ease-in-out`,
           position: 'fixed',
           width: '100%',
-          height: `${(winHeight - INTRO_VID_ASPECT * winWidth) / 2}px`,
+          height: `${(winHeight - INTRO_VID_ASPECT * winWidth) / 2 - 10}px`,
           minHeight: '10vh',
           backgroundColor: '#fff',
         }}
@@ -66,20 +68,16 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
             height: '100%',
           }}
         >
-          <Typography
-            variant='p'
-            fontWeight='bold'
-            sx={{
-              fontWeight: '600',
+          <AnimateForwardReverse
+            isAnimateIn={animIdx >= 0}
+            animationData={signatureAnimation}
+            style={{
+              height: '80%',
+              maxHeight: '120px',
               position: 'relative',
-              top: animIdx >= 0 ? 0 : '16px',
-              opacity: animIdx >= 0 ? 1 : 0,
-              transition: 'opacity 1s ease-in-out, top 1s ease',
               marginLeft: '15vw',
             }}
-          >
-            BEN PETERSON
-          </Typography>
+          />
           <Box
             sx={{
               display: 'flex',
@@ -105,6 +103,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                   color: 'inherit',
                   letterSpacing: '-1px',
                   cursor: 'pointer',
+                  fontSize: '1rem',
                   fontWeight: '300',
                   position: 'relative',
                   top: animIdx >= idx + 1 ? 0 : '16px',
@@ -129,6 +128,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
         isNavbarCollapsed={isNavbarCollapsed}
         triggerAnimations={triggerAnimations}
         setIsNavbarCollapsed={setIsNavbarCollapsed}
+        isStartNavbar={isStartNavbar}
         setIsStartNavbar={setIsStartNavbar}
       />
     </>
