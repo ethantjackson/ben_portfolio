@@ -43,10 +43,16 @@ const IntroSplash = () => {
       <Box
         sx={{
           height: '100vh',
-          width: '100%',
+          width: {
+            xs: '200%',
+            sm: '100%',
+          },
           position: 'fixed',
           top: 0,
-          left: 0,
+          left: {
+            xs: '-50%',
+            sm: 0,
+          },
           zIndex: -2,
           overflow: 'hidden',
         }}

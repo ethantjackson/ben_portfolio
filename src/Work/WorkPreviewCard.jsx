@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { MODAL_ANIM_TIME_MS } from '../constants';
@@ -32,6 +32,9 @@ const WorkPreviewCard = ({
   const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [detailModalOpenDelayed, setDetailModalOpenDelayed] = useState(false);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const expandToModal = useCallback(
     (modalOpen) => {
       if (!modalOpen) {
@@ -42,17 +45,21 @@ const WorkPreviewCard = ({
         return;
       }
       const dims = cardRef?.current.getBoundingClientRect();
-      const newXScale = (winWidth * 0.9) / dims.width;
-      const newYScale = (winHeight * 0.9) / dims.height;
+
+      const widthFactor = isMobile ? 1 : 0.9;
+      const heightFactor = isMobile ? 1 : 0.9;
+
+      const newXScale = (winWidth * widthFactor) / dims.width;
+      const newYScale = (winHeight * heightFactor) / dims.height;
       setXScale(newXScale);
       setYScale(newYScale);
 
-      const newLeft = winWidth * 0.05 - dims.left;
-      const newTop = winHeight * 0.05 - dims.top;
+      const newLeft = winWidth * ((1 - widthFactor) / 2) - dims.left;
+      const newTop = winHeight * ((1 - heightFactor) / 2) - dims.top;
       setLeftPos(newLeft);
       setTopPos(newTop);
     },
-    [winWidth, winHeight]
+    [winWidth, winHeight, isMobile] // include isMobile in dependencies
   );
 
   useEffect(() => {
@@ -97,6 +104,22 @@ const WorkPreviewCard = ({
     }
   }, [hovering]);
 
+  const touchTimeoutRef = useRef(null);
+
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    // Start a timer to set hovering true if held for 500ms
+    touchTimeoutRef.current = setTimeout(() => {
+      setHovering(true);
+    }, 500);
+  };
+
+  const handleTouchEnd = () => {
+    // If touch ends before 500ms, cancel the timer and reset hovering
+    clearTimeout(touchTimeoutRef.current);
+    setHovering(false);
+  };
+
   return (
     <>
       <DimOverlay active={detailModalOpen} />
@@ -116,14 +139,19 @@ const WorkPreviewCard = ({
         }}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
         ref={cardRef}
       >
         <FadeInOnScroll delay={fadeInDelay} offset={0}>
           <Box
             ref={modalRef}
             sx={{
-              borderRadius:
-                detailModalOpen || detailModalOpenDelayed ? '1.2rem' : '0',
+              borderRadius: {
+                xs: 'none',
+                sm: detailModalOpen || detailModalOpenDelayed ? '1.2rem' : '0',
+              },
               backgroundColor: 'white',
               overflowY:
                 detailModalOpen && detailModalOpenDelayed ? 'scroll' : 'hidden',

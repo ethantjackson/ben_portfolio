@@ -1,4 +1,11 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import WorkPreviewCard from './WorkPreviewCard';
 import { SCROLL_TIME_MS } from '../constants';
@@ -10,6 +17,9 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
   const [animStarted, setAnimStarted] = useState(false);
   const [descriptionOpacity, setDescriptionOpacity] = useState(0);
   const [dividerWidth, setDividerWidth] = useState(0);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const initiateIntroAnim = () => {
     if (animStarted) return;
@@ -34,22 +44,37 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
       sx={{
         backgroundColor: '#fff',
         position: 'relative',
-        paddingBottom: '8vh',
+        paddingBottom: { xs: '12px', sm: '8vh' },
       }}
     >
       <Container
-        sx={{ paddingTop: '10vh', maxWidth: 'calc(100% - 200px) !important' }}
+        sx={{
+          maxWidth: {
+            xs: 'calc(100% - 24px) !important',
+            sm: 'calc(100% - 200px) !important',
+          },
+        }}
       >
-        <Grid container justifyContent='center'>
-          <Grid item xs={3} sx={{ textAlign: 'left' }}>
+        <Grid
+          container
+          justifyContent='center'
+          sx={{
+            paddingTop: { xs: '24px', sm: '10vh' },
+          }}
+        >
+          <Grid item xs={12} sm={3} sx={{ textAlign: 'left' }}>
             <AnimateInView
               animationData={workTextAnimation}
-              style={{ height: '45px', marginTop: '8px' }}
+              style={{
+                height: '45px',
+                marginTop: '8px',
+              }}
             />
           </Grid>
           <Grid item xs sx={{ textAlign: 'justify' }}>
             <Typography
               variant='h5'
+              mt={{ xs: 3, sm: 0 }}
               sx={{
                 opacity: descriptionOpacity,
                 transition: 'opacity 0.7s ease-in-out',
@@ -62,7 +87,7 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
           </Grid>
           <Grid
             item
-            mt={6}
+            mt={{ xs: 3, sm: 6 }}
             sx={{
               transform: `scaleX(${dividerWidth})`,
               transition: 'transform 0.6s ease-in-out',
@@ -75,9 +100,9 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
 
         <Grid container pt={{ xs: 4, xl: 6 }} spacing={{ xs: 2, xl: 3 }} mb={5}>
           {PROJECTS_INFO.map((project, idx) => {
-            const isWide = idx % 4 === 0 || idx % 4 === 3;
+            const isWide = !isMobile && (idx % 4 === 0 || idx % 4 === 3);
             const widthFraction = isWide ? 21 / 37 : 16 / 37;
-            let fadeInDelay = idx % 2 === 0 ? 300 : 500;
+            let fadeInDelay = isMobile ? 0 : idx % 2 === 0 ? 300 : 500;
             // if (idx === 2) fadeInDelay = 500;
             // if (idx === 3) fadeInDelay = 800;
 
@@ -86,7 +111,10 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
                 item
                 key={project.title}
                 sx={{
-                  width: `${widthFraction * 100}%`,
+                  width: {
+                    xs: '100%',
+                    sm: `${widthFraction * 100}%`,
+                  },
                   aspectRatio: isWide ? '21/9' : '16/9',
                 }}
               >

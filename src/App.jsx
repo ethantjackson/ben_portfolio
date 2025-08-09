@@ -96,16 +96,19 @@ function App() {
         return;
       }
       scrollTo(WORK);
-      setTimeout(
-        () => window.removeEventListener('wheel', handleScroll),
-        SCROLL_TIME_MS
-      );
+      setTimeout(() => {
+        window.removeEventListener('wheel', handleScroll);
+        window.removeEventListener('touchmove', handleScroll);
+      }, SCROLL_TIME_MS);
     };
 
-    if (!scrollTarget)
+    if (!scrollTarget) {
       window.addEventListener('wheel', handleScroll, { passive: false });
+      window.addEventListener('touchmove', handleScroll, { passive: false });
+    }
     return () => {
       window.removeEventListener('wheel', handleScroll);
+      window.removeEventListener('touchmove', handleScroll);
     };
     // eslint-disable-next-line
   }, [scrollTarget]);

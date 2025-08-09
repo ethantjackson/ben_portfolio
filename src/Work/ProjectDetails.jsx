@@ -17,18 +17,24 @@ const ProjectDetails = ({
       container
       justifyContent='center'
       sx={{
-        width: '80%',
-        marginLeft: '10%',
-        paddingTop: '3rem',
+        width: { xs: 'calc(100% - 24px)', sm: '80%' },
+        marginLeft: { xs: '12px', sm: '10%' },
+        paddingTop: { xs: '1rem', sm: '3rem' },
         paddingBottom: '5rem',
       }}
     >
-      <Grid item xs={4} xl={2} sx={{ textAlign: 'left' }}>
+      <Grid
+        item
+        xs={12}
+        sm={4}
+        xl={2}
+        sx={{ textAlign: { xs: 'center', sm: 'left' } }}
+      >
         <FadeInOnScroll offset={100} delay={0} translate={0}>
           <Typography variant='h3'>{projectName}</Typography>
         </FadeInOnScroll>
       </Grid>
-      <Grid item xs sx={{ textAlign: 'justify' }}>
+      <Grid item mt={{ xs: 1, sm: 0 }} xs sx={{ textAlign: 'justify' }}>
         <FadeInOnScroll offset={100} delay={100} translate={0}>
           <Typography variant='h6'>{projectDescription}</Typography>
         </FadeInOnScroll>
@@ -37,18 +43,23 @@ const ProjectDetails = ({
       <ExpandInOnScroll offset={100} delay={200}>
         <Grid
           item
-          mt={6}
-          mb={6}
-          ml={'10%'}
+          mt={{ xs: 3, sm: 6 }}
+          mb={{ xs: 3, sm: 6 }}
+          ml={{ xs: '12px', sm: '10%' }}
           sx={{
             height: '2px',
             background: 'black',
-            width: '80%',
+            width: { xs: 'calc(100% - 24px)', sm: '80%' },
           }}
         />
       </ExpandInOnScroll>
 
-      <Grid container spacing={3} alignItems='center' justifyContent='center'>
+      <Grid
+        container
+        spacing={{ xs: 1, sm: 3 }}
+        alignItems='center'
+        justifyContent='center'
+      >
         {detailsContent.map((content, index) => {
           if (content.contentType === CONTENT_TYPE.VIDEO_EMBED) {
             return (
@@ -66,7 +77,7 @@ const ProjectDetails = ({
           }
           if (content.contentType === CONTENT_TYPE.TEXT) {
             return (
-              <span key={index}>
+              <React.Fragment key={index}>
                 <Grid item xs={12} sx={{ textAlign: 'center' }} mt={1}>
                   <Typography variant='h4' sx={{ fontWeight: '500' }}>
                     {content.header}
@@ -75,7 +86,7 @@ const ProjectDetails = ({
                 <Grid item xs={12} sx={{ textAlign: 'justify' }}>
                   <Typography variant='h6'>{content.value}</Typography>
                 </Grid>
-              </span>
+              </React.Fragment>
             );
           }
           return <span key={index}></span>;
@@ -86,7 +97,7 @@ const ProjectDetails = ({
             Credits
           </Typography>
         </Grid>
-        <Grid item xs={12} sx={{ textAlign: 'center' }} mt={-2}>
+        <Grid item xs={12} sx={{ textAlign: 'center' }}>
           {Object.entries(projectCredits).map((val, index) => (
             <Typography variant='h6' key={index}>
               {_.startCase(val[0])} - {val[1]}

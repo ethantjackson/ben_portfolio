@@ -1,4 +1,11 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { Instagram, LinkedIn } from '@mui/icons-material';
 import { ReactComponent as BehanceIcon } from '../Icons/Behance.svg';
 import React from 'react';
@@ -9,24 +16,46 @@ import contactTextAnimation from '../LottieAnimations/Contact_TextAnim.json';
 import linksTextAnimation from '../LottieAnimations/Links_TextAnim.json';
 
 const Contact = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <Box id='#CONTACT' sx={{ backgroundColor: '#fff', paddingBottom: '8vh' }}>
-      <Container sx={{ maxWidth: 'calc(100% - 200px) !important' }}>
+      <Container
+        sx={{
+          maxWidth: {
+            xs: 'calc(100% - 24px) !important',
+            sm: 'calc(100% - 200px) !important',
+          },
+        }}
+      >
         <Grid container justifyContent='center'>
-          <Grid item xs={3} xl={2} sx={{ textAlign: 'left' }}>
+          <Grid item xs={12} sm={3} xl={2} sx={{ textAlign: 'left' }}>
             <AnimateInView
               animationData={contactTextAnimation}
-              style={{ height: '35px', width: '220px', marginTop: '8px' }}
+              style={{
+                height: '35px',
+                width: isMobile ? '100%' : '220px',
+                marginTop: '8px',
+              }}
             />
           </Grid>
           <Grid item xs pl={2} sx={{ textAlign: 'justify' }}>
             <FadeInOnScroll offset={100} delay={400} translate={0}>
-              <Typography variant='h5' mb={5}>
+              <Typography
+                variant='h5'
+                mt={{ xs: 2, sm: 0 }}
+                mb={{ xs: 2, sm: 5 }}
+              >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
                 illo perspiciatis repellat delectus tenetur eum in neque rem
                 Lorem eligendi inventore ut earum?
               </Typography>
-              <Typography variant='h5' mb={5}>
+              <Typography
+                variant='h5'
+                mt={{ xs: 2, sm: 0 }}
+                mb={{ xs: 2, sm: 5 }}
+              >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
                 illo perspiciatis repellat delectus tenetur eum in neque rem
                 Lorem eligendi inventore ut earum?
@@ -37,27 +66,39 @@ const Contact = () => {
           <ExpandInOnScroll offset={100} delay={500}>
             <Grid
               item
-              mt={6}
-              mb={8}
-              ml={'10%'}
+              mt={{ xs: 3, sm: 6 }}
+              mb={{ xs: 3, sm: 8 }}
+              ml={{ xs: '12px', sm: '10%' }}
               sx={{
                 height: '2px',
                 background: 'black',
-                width: '80%',
+                width: { xs: 'calc(100% - 24px)', sm: '80%' },
               }}
             />
           </ExpandInOnScroll>
 
-          <Grid item xs={3} xl={2} sx={{ textAlign: 'left' }}>
+          <Grid item xs={12} sm={3} xl={2} sx={{ textAlign: 'left' }}>
             <AnimateInView
               animationData={linksTextAnimation}
-              style={{ height: '35px', width: '127px', marginTop: '8px' }}
-              delay={1000}
+              style={{
+                height: '35px',
+                width: isMobile ? '100%' : '127px',
+                marginTop: '8px',
+              }}
             />
           </Grid>
-          <Grid item xs pl={2} sx={{ textAlign: 'justify' }}>
+          <Grid
+            item
+            xs
+            pl={2}
+            sx={{ textAlign: { xs: 'center', sm: 'justify' } }}
+          >
             <FadeInOnScroll offset={100} delay={800} translate={0} inline>
-              <Typography variant='h5' mb={5}>
+              <Typography
+                variant='h5'
+                mb={{ xs: 2, sm: 5 }}
+                mt={{ xs: 2, sm: 0 }}
+              >
                 Email: bcpeters100@gmail.com
               </Typography>
             </FadeInOnScroll>
@@ -67,6 +108,7 @@ const Contact = () => {
                 alignContent: 'center',
                 alignItems: 'center',
                 columnGap: '25pt',
+                justifyContent: { xs: 'space-around', sm: 'start' },
               }}
             >
               <ExpandInOnScroll offset={50} delay={800}>

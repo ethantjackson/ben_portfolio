@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { INTRO_VID_ASPECT, NAV_ITEMS } from './constants';
 import NavbarCollapser from './Components/NavbarCollapser';
@@ -10,6 +10,9 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
   const [isNavbarCollapsed, setIsNavbarCollapsed] = useState(true);
   const [isStartNavbar, setIsStartNavbar] = useState(true);
   const [isStartNavbarDelayed, setIsStartNavbarDelayed] = useState(true);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const animationTimeoutsRef = useRef([]);
 
@@ -55,7 +58,10 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
             : `translate ${isNavbarCollapsed ? 1.2 : 0.8}s ease-in-out`,
           position: 'fixed',
           width: '100%',
-          height: `${(winHeight - INTRO_VID_ASPECT * winWidth) / 2 - 10}px`,
+          height: {
+            xs: '150px',
+            sm: `${(winHeight - INTRO_VID_ASPECT * winWidth) / 2 - 10}px`,
+          },
           minHeight: '10vh',
           backgroundColor: '#fff',
         }}
@@ -66,6 +72,14 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
             alignContent: 'center',
             alignItems: 'center',
             height: '100%',
+            flexDirection: {
+              xs: 'column',
+              sm: 'row',
+            },
+            marginLeft: {
+              xs: 0,
+              sm: '15vw',
+            },
           }}
         >
           <AnimateForwardReverse
@@ -73,9 +87,8 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
             animationData={signatureAnimation}
             style={{
               height: '80%',
-              maxHeight: '120px',
               position: 'relative',
-              marginLeft: '15vw',
+              maxHeight: isMobile ? '100px' : '120px',
             }}
           />
           <Box
@@ -84,7 +97,10 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
               justifyContent: 'space-around',
               float: 'right',
               marginLeft: 'auto',
-              marginRight: 'calc(100px + 7vw)',
+              marginRight: {
+                xs: 'auto',
+                sm: 'calc(100px + 7vw)',
+              },
               width: '20vw',
               minWidth: '280px',
             }}

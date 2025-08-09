@@ -12,14 +12,21 @@ const Experimentation = () => {
       id='#EXPERIMENTATION'
       sx={{
         backgroundColor: '#fff',
-        paddingTop: '8vh',
+        paddingTop: { xs: '64px', sm: '8vh' },
         paddingBottom: '8vh',
         minHeight: '100vh',
       }}
     >
-      <Container sx={{ maxWidth: 'calc(100% - 200px) !important' }}>
+      <Container
+        sx={{
+          maxWidth: {
+            xs: 'calc(100% - 24px) !important',
+            sm: 'calc(100% - 200px) !important',
+          },
+        }}
+      >
         <Grid container justifyContent='center'>
-          <Grid item xs={5} xl={3} sx={{ textAlign: 'left' }}>
+          <Grid item xs={12} sm={5} xl={3} sx={{ textAlign: 'left' }}>
             {/* <FadeInOnScroll offset={100} delay={200} translate={0}>
               <Typography variant='h3'>Experimentation</Typography>
               <Typography variant='h3'>+ Stills</Typography>
@@ -29,7 +36,7 @@ const Experimentation = () => {
               style={{ height: '78px', paddingRight: '10px' }}
             />
           </Grid>
-          <Grid item xs sx={{ textAlign: 'justify' }}>
+          <Grid item xs sx={{ textAlign: 'justify' }} mt={{ xs: 1, sm: 0 }}>
             <FadeInOnScroll offset={100} delay={400} translate={0}>
               <Typography variant='h5'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
@@ -42,8 +49,8 @@ const Experimentation = () => {
           <ExpandInOnScroll offset={100} delay={500}>
             <Grid
               item
-              mt={6}
-              mb={8}
+              mt={{ xs: 3, sm: 6 }}
+              mb={{ xs: 3, sm: 8 }}
               sx={{
                 height: '2px',
                 background: 'black',
@@ -53,9 +60,9 @@ const Experimentation = () => {
           </ExpandInOnScroll>
         </Grid>
 
-        <Grid container spacing={3} alignItems='center' justifyContent='center'>
+        <Grid container spacing={1} alignItems='center' justifyContent='center'>
           {EXPERIMENTS_INFO.map((info, index) => (
-            <Grid item xs={info.width} key={index}>
+            <Grid item xs={12} sm={info.width} key={index}>
               <FadeInOnScroll delay={0} offset={0} translate={100}>
                 <img width='100%' alt='ProjectImage' src={info.url} />
               </FadeInOnScroll>

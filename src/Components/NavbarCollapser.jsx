@@ -57,11 +57,17 @@ const NavbarCollapser = ({
     <Box
       sx={{
         position: 'fixed',
-        right: '90px',
+        right: {
+          xs: '20px',
+          sm: '90px',
+        },
         zIndex: '2',
-        top: `calc(max(${
-          (winHeight - INTRO_VID_ASPECT * winWidth) / 4 - 22
-        }px, 5vh - 18px))`,
+        top: {
+          xs: '30px',
+          sm: `calc(max(${
+            (winHeight - INTRO_VID_ASPECT * winWidth) / 4 - 22
+          }px, 5vh - 18px))`,
+        },
         cursor: 'pointer',
       }}
       onClick={() => {

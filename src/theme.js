@@ -18,4 +18,36 @@ const theme = createTheme({
   },
 });
 
+theme.typography.h3 = {
+  ...theme.typography.h3,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '2.2rem', // only override this
+    fontWeight: theme.typography.h5.fontWeight, // keep default
+  },
+};
+
+theme.typography.h4 = {
+  ...theme.typography.h4,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.6rem', // only override this
+    fontWeight: theme.typography.h5.fontWeight, // keep default
+  },
+};
+
+theme.typography.h5 = {
+  ...theme.typography.h5,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.1rem', // only override this
+    fontWeight: theme.typography.h5.fontWeight, // keep default
+  },
+};
+
+theme.typography.h6 = {
+  ...theme.typography.h6,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1rem', // only override this
+    fontWeight: theme.typography.h5.fontWeight, // keep default
+  },
+};
+
 export default theme;

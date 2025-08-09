@@ -16,6 +16,10 @@ html {
   scroll-behavior: smooth;
 }
 
+#root {
+  overflow: hidden;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
