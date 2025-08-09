@@ -104,14 +104,14 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                   letterSpacing: '-1px',
                   cursor: 'pointer',
                   fontSize: '1rem',
-                  fontWeight: '300',
+                  fontWeight: '500',
                   position: 'relative',
                   top: animIdx >= idx + 1 ? 0 : '16px',
                   opacity: animIdx >= idx + 1 ? 1 : 0,
                   transition:
                     'letter-spacing 0.3s, opacity 0.5s ease-in-out, top 1s ease',
                   '&:hover': {
-                    fontWeight: '800',
+                    fontWeight: '1000',
                     letterSpacing: 0,
                   },
                 }}

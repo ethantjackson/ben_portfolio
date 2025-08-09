@@ -23,12 +23,12 @@ const ProjectDetails = ({
         paddingBottom: '5rem',
       }}
     >
-      <Grid item xs={4} sx={{ textAlign: 'left' }}>
+      <Grid item xs={4} xl={2} sx={{ textAlign: 'left' }}>
         <FadeInOnScroll offset={100} delay={0} translate={0}>
           <Typography variant='h3'>{projectName}</Typography>
         </FadeInOnScroll>
       </Grid>
-      <Grid item xs={8} sx={{ textAlign: 'justify' }}>
+      <Grid item xs sx={{ textAlign: 'justify' }}>
         <FadeInOnScroll offset={100} delay={100} translate={0}>
           <Typography variant='h6'>{projectDescription}</Typography>
         </FadeInOnScroll>
@@ -72,7 +72,7 @@ const ProjectDetails = ({
                     {content.header}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sx={{ textAlign: 'justify' }} mt={-2}>
+                <Grid item xs={12} sx={{ textAlign: 'justify' }}>
                   <Typography variant='h6'>{content.value}</Typography>
                 </Grid>
               </span>

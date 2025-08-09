@@ -19,11 +19,13 @@ const AnimateForwardReverse = ({ isAnimateIn, animationData, style = {} }) => {
 
     const instance = lottieRef.current;
     if (isAnimateIn) {
+      instance.setSpeed(1);
       instance.setDirection(1);
-      lottieRef.current.goToAndPlay(0, true);
+      instance.goToAndPlay(0, true);
     } else {
+      instance.setSpeed(3);
       instance.setDirection(-1);
-      lottieRef.current.play();
+      instance.play();
     }
   }, [isAnimateIn, initialized]);
 
