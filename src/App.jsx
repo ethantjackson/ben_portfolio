@@ -13,6 +13,7 @@ import {
 import Contact from './Contact/Contact';
 import Experimentation from './Experimentation/Experimentation';
 import FadeInOut from './Transitions/FadeInOut';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 function App() {
   const [winWidth, setWinWidth] = useState(window.innerWidth);
@@ -25,6 +26,9 @@ function App() {
     Object.fromEntries(NAV_ITEMS.map((item) => [item, true]))
   );
   const isScrolling = useRef(false);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const updateNonTargetStatus = (setStatusMap, targetID) => {
     setStatusMap((prevMap) => {
@@ -95,11 +99,11 @@ function App() {
       if (deltaY < 0) {
         return;
       }
-      scrollTo(WORK);
-      setTimeout(() => {
+      if (!isMobile || window.scrollY >= window.innerHeight) {
+        scrollTo(WORK);
         window.removeEventListener('wheel', handleScroll);
         window.removeEventListener('touchmove', handleScroll);
-      }, SCROLL_TIME_MS);
+      }
     };
 
     if (!scrollTarget) {
