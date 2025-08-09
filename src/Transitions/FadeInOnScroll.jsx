@@ -20,30 +20,37 @@ const FadeInOnScroll = ({
     // Activate scroll detection after delay
     activateTimeout.current = setTimeout(() => {
       isActive.current = true;
-      window.addEventListener('scroll', handleScroll, { passive: false });
-      window.addEventListener('resize', handleScroll);
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', handleScroll, { passive: true });
+      window.addEventListener('touchmove', handleTouchMove, { passive: true });
       handleScroll(); // Initial check
     }, SCROLL_TIME_MS);
+
+    function checkVisibility() {
+      if (!isActive.current || isVisible || !containerRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const isAboveViewport = rect.bottom < 0;
+      const isInView =
+        rect.top < window.innerHeight - offset + translate && rect.bottom > 0;
+
+      if (isInView || isAboveViewport) {
+        setTimeout(() => {
+          setIsVisible(true);
+        }, delay);
+      }
+    }
 
     function handleScroll() {
       if (debounceTimeout.current) {
         clearTimeout(debounceTimeout.current);
       }
+      debounceTimeout.current = setTimeout(checkVisibility, 50);
+    }
 
-      debounceTimeout.current = setTimeout(() => {
-        if (!isActive.current || isVisible || !containerRef.current) return;
-
-        const rect = containerRef.current.getBoundingClientRect();
-        const isAboveViewport = rect.bottom < 0;
-        const isInView =
-          rect.top < window.innerHeight - offset + translate && rect.bottom > 0;
-
-        if (isInView || isAboveViewport) {
-          setTimeout(() => {
-            setIsVisible(true);
-          }, delay);
-        }
-      }, 100); // debounce delay
+    function handleTouchMove() {
+      // No debounce on touchmove for immediate response
+      checkVisibility();
     }
 
     return () => {
@@ -51,6 +58,7 @@ const FadeInOnScroll = ({
       clearTimeout(activateTimeout.current);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, [delay, offset, isVisible, translate]);
 
