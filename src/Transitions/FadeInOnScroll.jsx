@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { SCROLL_TIME_MS } from '../constants';
 
 const FadeInOnScroll = ({
@@ -15,9 +15,6 @@ const FadeInOnScroll = ({
   const isActive = useRef(false);
   const debounceTimeout = useRef(null);
   const activateTimeout = useRef(null);
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     // Activate scroll detection after delay
@@ -63,11 +60,8 @@ const FadeInOnScroll = ({
       sx={{
         display: inline ? 'inline' : 'block',
         height: '100%',
-        opacity: isVisible || isMobile ? 1 : 0,
-        transform:
-          isVisible || isMobile
-            ? 'translateY(0px)'
-            : `translateY(${translate}px)`,
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0px)' : `translateY(${translate}px)`,
         transition: `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`,
       }}
     >

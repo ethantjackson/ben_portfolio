@@ -22,6 +22,7 @@ const PreviewVideo = ({ src, play, seekTime = 0, hidden = false }) => {
       muted
       playsInline
       webkit-playsinline='true'
+      poster='https://res.cloudinary.com/workoutcloud/image/upload/v1726534625/instaStill1_wa0f4y.png'
       style={{
         width: '100%',
         height: hidden ? '0' : '100%',
