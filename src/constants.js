@@ -1,4 +1,4 @@
-export const INTRO_VID_ASPECT = 800 / 1920;
+export const INTRO_VID_ASPECT = 875 / 1920;
 export const WORK = 'WORK';
 export const EXPERIMENTATION = 'EXPERIMENTATION';
 export const CONTACT = 'CONTACT';

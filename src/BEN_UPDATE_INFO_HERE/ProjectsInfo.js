@@ -7,7 +7,7 @@ export const CONTENT_TYPE = Object.freeze({
 export const PROJECTS_INFO = [
   // QUINJET
   {
-    title: 'QUINJET',
+    title: 'QUINJET TEST',
     thumbnailTimeSeconds: 1.5,
     thumbnailURL:
       'https://res.cloudinary.com/workoutcloud/video/upload/v1722488383/YerbaMate_MainVideo_yaa37n.mp4',
@@ -17,22 +17,39 @@ export const PROJECTS_INFO = [
       studio: 'Bing Chilling Labs',
       director: 'Ben Peterson',
       creativeDirection: 'Ethan Jackson',
+      titleTest: 'test',
+      lightingDirector: 'Test Person',
     },
     detailsContent: [
       {
         contentType: CONTENT_TYPE.VIDEO_EMBED,
         vimeoID: '1106766274',
-        width: 12, // accepts values from 1 to 12
+        width: 6, // accepts values from 1 to 12
       },
       {
         contentType: CONTENT_TYPE.VIDEO_EMBED,
         vimeoID: '1106771724',
-        width: 6, // accepts values from 1 to 12
+        width: 4, // accepts values from 1 to 12
       },
       {
         contentType: CONTENT_TYPE.STYLEFRAME,
         url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534625/instaStill1_wa0f4y.png',
         width: 8, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534553/poster_z77luw.png',
+        width: 3,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534553/poster_z77luw.png',
+        width: 3,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534553/poster_z77luw.png',
+        width: 3,
       },
       {
         contentType: CONTENT_TYPE.STYLEFRAME,
