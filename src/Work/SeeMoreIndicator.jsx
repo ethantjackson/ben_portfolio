@@ -10,7 +10,7 @@ const SeeMoreIndicator = ({ modalRef }) => {
   useEffect(() => {
     setTimeout(() => {
       if (!hasScrolled.current) setShowIndicator(true);
-    }, 4500);
+    }, 3000);
 
     const refCurrent = modalRef.current;
     const handleScroll = () => {

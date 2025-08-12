@@ -5,6 +5,7 @@ import ExpandInOnScroll from '../Transitions/ExpandInOnScroll';
 import { EXPERIMENTS_INFO } from '../BEN_UPDATE_INFO_HERE/ExperimentsInfo';
 import AnimateInView from '../LottieAnimations/AnimateInView';
 import experimentationTextAnimation from '../LottieAnimations/ExperimentationStills_TextAnim_shapes.json';
+import FlippableImageCard from '../Components/FlippableImageCard';
 
 const Experimentation = () => {
   return (
@@ -60,11 +61,11 @@ const Experimentation = () => {
           </ExpandInOnScroll>
         </Grid>
 
-        <Grid container spacing={1} alignItems='center' justifyContent='center'>
+        <Grid container spacing={2} alignItems='center' justifyContent='center'>
           {EXPERIMENTS_INFO.map((info, index) => (
             <Grid item xs={12} sm={info.width} key={index}>
               <FadeInOnScroll delay={0} offset={0} translate={100}>
-                <img width='100%' alt='ProjectImage' src={info.url} />
+                <FlippableImageCard src={info.url} text={info.text} />
               </FadeInOnScroll>
             </Grid>
           ))}
