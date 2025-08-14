@@ -31,7 +31,7 @@ const Experimentation = ({ winHeight, winWidth }) => {
         }}
       >
         <Grid container justifyContent='center'>
-          <Grid item xs={12} sm={6} xl={4} sx={{ textAlign: 'left' }}>
+          <Grid item xs={12} sm={6} lg={5} xl={4} sx={{ textAlign: 'left' }}>
             <AnimateInView
               animationData={experimentationTextAnimation}
               style={{ height: '78px', width: '390px', paddingRight: '10px' }}

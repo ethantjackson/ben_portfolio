@@ -142,14 +142,15 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                   letterSpacing: '-1px',
                   cursor: 'pointer',
                   fontSize: '1rem',
-                  fontWeight: '500',
+                  fontWeight: '400',
+                  fontFamily: '"Creato Display", sans-serif',
                   position: 'relative',
                   top: animIdx >= idx + 1 ? 0 : '16px',
                   opacity: animIdx >= idx + 1 ? 1 : 0,
                   transition:
                     'letter-spacing 0.3s, opacity 0.5s ease-in-out, top 1s ease',
                   '&:hover': {
-                    fontWeight: '1000',
+                    fontWeight: '700',
                     letterSpacing: 0,
                   },
                 }}

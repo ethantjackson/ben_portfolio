@@ -62,7 +62,7 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
             paddingTop: { xs: '24px', sm: '10vh' },
           }}
         >
-          <Grid item xs={12} sm={6} lg={3} sx={{ textAlign: 'left' }}>
+          <Grid item xs={12} sm={6} lg={4} xl={3} sx={{ textAlign: 'left' }}>
             <AnimateInView
               animationData={workTextAnimation}
               style={{

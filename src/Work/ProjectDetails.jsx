@@ -29,14 +29,37 @@ const ProjectDetails = ({
         xs={12}
         sm={5}
         xl={4}
-        sx={{ textAlign: { xs: 'center', sm: 'left' } }}
+        sx={{
+          textAlign: {
+            xs: 'center',
+            sm: 'left',
+          },
+        }}
       >
         <FadeInOnScroll offset={100} delay={0} translate={0}>
-          <Typography variant='h3'>{projectName}</Typography>
+          <Typography
+            variant='h3'
+            sx={{
+              fontFamily: '"Creato Display", sans-serif',
+              fontWeight: 400,
+              fontSize: '41px',
+            }}
+          >
+            {projectName}
+          </Typography>
         </FadeInOnScroll>
       </Grid>
-      <Grid item mt={{ xs: 1, sm: 0 }} xs sx={{ textAlign: 'justify' }}>
-        <FadeInOnScroll offset={100} delay={100} translate={0}>
+      <Grid item mt={{ xs: 1, sm: 0 }} xs sx={{}}>
+        <FadeInOnScroll
+          offset={100}
+          delay={100}
+          translate={0}
+          styles={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
           <Typography variant='h6'>{projectDescription}</Typography>
         </FadeInOnScroll>
       </Grid>

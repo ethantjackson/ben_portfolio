@@ -244,8 +244,8 @@ const WorkPreviewCard = ({
                 transform: `scale(${xScale}, ${yScale})`,
                 opacity: showText && !detailModalOpen ? 1 : 0,
                 transition: `all ${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
-                letterSpacing: '2px',
-                fontWeight: 'bold',
+                fontFamily: '"Creato Display", sans-serif',
+                fontWeight: 700,
               }}
             >
               {projectName}

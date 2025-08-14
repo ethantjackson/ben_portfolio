@@ -111,9 +111,10 @@ const NavbarCollapser = ({
             (winHeight - INTRO_VID_ASPECT * winWidth) / 4 - 22
           }px, 5vh - 18px))`,
         },
-        cursor: 'pointer',
+        cursor: enabled ? 'pointer' : 'default',
       }}
       onClick={() => {
+        if (!enabled) return;
         if (isNavbarCollapsed) triggerAnimations(200, 200);
         else triggerAnimations(0, 50, true);
         setIsNavbarCollapsed(!isNavbarCollapsed);

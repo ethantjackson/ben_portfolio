@@ -9,6 +9,7 @@ const FadeInOnScroll = ({
   delay = 500,
   translate = 30,
   inline = false,
+  styles = {},
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
@@ -71,6 +72,7 @@ const FadeInOnScroll = ({
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0px)' : `translateY(${translate}px)`,
         transition: `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`,
+        ...styles,
       }}
     >
       {children}

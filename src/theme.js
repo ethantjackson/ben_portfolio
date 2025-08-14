@@ -1,12 +1,10 @@
 import { createTheme } from '@mui/material/styles';
 import { red, blue } from '@mui/material/colors';
-import '@fontsource/poppins/400.css'; // Regular
-import '@fontsource/poppins/700.css'; // Bold
+import './index.css'; // make sure your @font-face rules are loaded
 
-// Create a theme instance.
 const theme = createTheme({
   typography: {
-    fontFamily: '"Poppins", sans-serif',
+    fontFamily: '"Cotham Sans", sans-serif',
   },
   palette: {
     primary: {
@@ -21,32 +19,32 @@ const theme = createTheme({
 theme.typography.h3 = {
   ...theme.typography.h3,
   [theme.breakpoints.down('sm')]: {
-    fontSize: '2.2rem', // only override this
-    fontWeight: theme.typography.h5.fontWeight, // keep default
+    fontSize: '2.2rem',
+    fontWeight: theme.typography.h5.fontWeight,
   },
 };
 
 theme.typography.h4 = {
   ...theme.typography.h4,
   [theme.breakpoints.down('sm')]: {
-    fontSize: '1.6rem', // only override this
-    fontWeight: theme.typography.h5.fontWeight, // keep default
+    fontSize: '1.6rem',
+    fontWeight: theme.typography.h5.fontWeight,
   },
 };
 
 theme.typography.h5 = {
   ...theme.typography.h5,
   [theme.breakpoints.down('sm')]: {
-    fontSize: '1.1rem', // only override this
-    fontWeight: theme.typography.h5.fontWeight, // keep default
+    fontSize: '1.1rem',
+    fontWeight: theme.typography.h5.fontWeight,
   },
 };
 
 theme.typography.h6 = {
   ...theme.typography.h6,
   [theme.breakpoints.down('sm')]: {
-    fontSize: '1rem', // only override this
-    fontWeight: theme.typography.h5.fontWeight, // keep default
+    fontSize: '1rem',
+    fontWeight: theme.typography.h5.fontWeight,
   },
 };
 
