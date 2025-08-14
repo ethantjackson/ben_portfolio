@@ -62,16 +62,26 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
             paddingTop: { xs: '24px', sm: '10vh' },
           }}
         >
-          <Grid item xs={12} sm={3} sx={{ textAlign: 'left' }}>
+          <Grid item xs={12} sm={6} lg={3} sx={{ textAlign: 'left' }}>
             <AnimateInView
               animationData={workTextAnimation}
               style={{
                 height: '45px',
+                width: '187px',
                 marginTop: '8px',
               }}
             />
           </Grid>
-          <Grid item xs sx={{ textAlign: 'justify' }}>
+          <Grid
+            item
+            xs
+            sx={{
+              textAlign: 'justify',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
             <Typography
               variant='h5'
               mt={{ xs: 3, sm: 0 }}
@@ -80,9 +90,8 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
                 transition: 'opacity 0.7s ease-in-out',
               }}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
-              illo perspiciatis repellat delectus tenetur eum in neque rem Lorem
-              eligendi inventore ut earum?
+              A selection of things I’ve made covering everything from quick
+              personal projects to client campaigns.
             </Typography>
           </Grid>
           <Grid

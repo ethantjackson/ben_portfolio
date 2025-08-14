@@ -40,25 +40,27 @@ const Contact = () => {
               }}
             />
           </Grid>
-          <Grid item xs pl={2} sx={{ textAlign: 'justify' }}>
+          <Grid item xs pl={isMobile ? 0 : 2} sx={{ textAlign: 'justify' }}>
             <FadeInOnScroll offset={100} delay={400} translate={0}>
               <Typography
                 variant='h5'
                 mt={{ xs: 2, sm: 0 }}
                 mb={{ xs: 2, sm: 5 }}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
-                illo perspiciatis repellat delectus tenetur eum in neque rem
-                Lorem eligendi inventore ut earum?
+                If you like what you see, I’m currently freelancing full time
+                and happy to discuss your project. I’ve had the privilege of
+                working with companies like Disney, Marvel and PBS, and with
+                clients ranging from large agency teams to individual directors.
               </Typography>
               <Typography
                 variant='h5'
                 mt={{ xs: 2, sm: 0 }}
                 mb={{ xs: 2, sm: 5 }}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
-                illo perspiciatis repellat delectus tenetur eum in neque rem
-                Lorem eligendi inventore ut earum?
+                I work in everything from creative concepting to 2D and 3D
+                animation, and I most enjoy spending my time getting into the
+                nitty-gritty of pre-production and crafting bespoke looks that
+                complement any given project.
               </Typography>
               <Typography variant='h5'>Get in touch!</Typography>
             </FadeInOnScroll>
@@ -90,7 +92,7 @@ const Contact = () => {
           <Grid
             item
             xs
-            pl={2}
+            pl={isMobile ? 0 : 2}
             sx={{ textAlign: { xs: 'center', sm: 'justify' } }}
           >
             <FadeInOnScroll offset={100} delay={800} translate={0} inline>
@@ -112,48 +114,69 @@ const Contact = () => {
               }}
             >
               <ExpandInOnScroll offset={50} delay={800}>
-                <Instagram
-                  sx={{
-                    fontSize: '50pt',
-                    cursor: 'pointer',
-                    '&:hover': {
-                      transform: 'scale(1.1) !important',
+                <a
+                  href={'https://www.instagram.com/bent.motion/'}
+                  target='_blank'
+                  rel='noreferrer'
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <Instagram
+                    sx={{
+                      fontSize: '50pt',
+                      cursor: 'pointer',
                       transition: '0.3s !important',
-                    },
-                  }}
-                />
-              </ExpandInOnScroll>
-              <ExpandInOnScroll offset={50} delay={900}>
-                <LinkedIn
-                  sx={{
-                    fontSize: '52pt',
-                    cursor: 'pointer',
-                    '&:hover': {
-                      transform: 'scale(1.1) !important',
-                      transition: '0.3s !important',
-                    },
-                  }}
-                />
+                      '&:hover': {
+                        transform: 'scale(1.1) !important',
+                      },
+                    }}
+                  />
+                </a>
               </ExpandInOnScroll>
               <ExpandInOnScroll offset={50} delay={1000}>
+                <a
+                  href={'https://www.linkedin.com/in/ben-thomas-6051201b0/'}
+                  target='_blank'
+                  rel='noreferrer'
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <LinkedIn
+                    sx={{
+                      fontSize: '52pt',
+                      cursor: 'pointer',
+                      transition: '0.3s !important',
+                      '&:hover': {
+                        transform: 'scale(1.1) !important',
+                      },
+                    }}
+                  />
+                </a>
+              </ExpandInOnScroll>
+              <ExpandInOnScroll offset={50} delay={1200}>
                 <Box
                   sx={{
                     cursor: 'pointer',
+                    transition: '0.6s !important',
                     '&:hover': {
                       transform: 'scale(1.1) !important',
-                      transition: '0.3s !important',
                     },
                     display: 'inline-flex',
                     alignContent: 'center',
                     alignItems: 'center',
                   }}
                 >
-                  <BehanceIcon
-                    style={{
-                      height: '50pt',
-                      width: '50pt',
-                    }}
-                  />
+                  <a
+                    href={'https://www.behance.net/benjamipeterso6'}
+                    target='_blank'
+                    rel='noreferrer'
+                    style={{ textDecoration: 'none', color: 'black' }}
+                  >
+                    <BehanceIcon
+                      style={{
+                        height: '50pt',
+                        width: '50pt',
+                      }}
+                    />
+                  </a>
                 </Box>
               </ExpandInOnScroll>
             </Box>

@@ -133,7 +133,9 @@ function App() {
   return (
     <div>
       <IntroNav winHeight={winHeight} winWidth={winWidth} scrollTo={scrollTo} />
-      <IntroSplash winHeight={winHeight} />
+      {!enabledStatusMap[EXPERIMENTATION] && (
+        <IntroSplash winHeight={winHeight} />
+      )}
       {(enabledStatusMap[WORK] || enabledStatusMap[CONTACT]) && (
         <FadeInOut isFadeIn={inStatusMap[WORK] || inStatusMap[CONTACT]}>
           <Work
@@ -150,7 +152,7 @@ function App() {
       )}
       {enabledStatusMap[EXPERIMENTATION] && (
         <FadeInOut isFadeIn={inStatusMap[EXPERIMENTATION]}>
-          <Experimentation />
+          <Experimentation winHeight={winHeight} winWidth={winWidth} />
         </FadeInOut>
       )}
     </div>

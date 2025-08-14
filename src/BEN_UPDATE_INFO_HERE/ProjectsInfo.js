@@ -22,9 +22,18 @@ export const PROJECTS_INFO = [
     },
     detailsContent: [
       {
+        vimeoID: '1106771724',
+        width: 4, // accepts values from 1 to 12
+      },
+      {
         contentType: CONTENT_TYPE.VIDEO_EMBED,
         vimeoID: '1106766274',
         width: 6, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '1106771724',
+        width: 4, // accepts values from 1 to 12
       },
       {
         contentType: CONTENT_TYPE.VIDEO_EMBED,

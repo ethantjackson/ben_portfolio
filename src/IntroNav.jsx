@@ -1,15 +1,21 @@
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
-import { INTRO_VID_ASPECT, NAV_ITEMS } from './constants';
+import {
+  EXPERIMENTATION,
+  INTRO_VID_ASPECT,
+  NAV_ITEMS,
+  SCROLL_TIME_MS,
+} from './constants';
 import NavbarCollapser from './Components/NavbarCollapser';
-import AnimateForwardReverse from './LottieAnimations/AnimateForwardReverse';
-import signatureAnimation from './LottieAnimations/Signature_Red_v2.json';
+import signature from './Icons/Signature.png';
+import FadeInOut from './Transitions/FadeInOut';
 
 const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
   const [animIdx, setAnimIdx] = useState(-1);
   const [isNavbarCollapsed, setIsNavbarCollapsed] = useState(true);
   const [isStartNavbar, setIsStartNavbar] = useState(true);
   const [isStartNavbarDelayed, setIsStartNavbarDelayed] = useState(true);
+  const [forceExpanded, setForceExpanded] = useState(false);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -44,9 +50,22 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
 
   const handleLink = (event, targetID) => {
     event.preventDefault();
-    triggerAnimations(0, 50, true);
+
+    if (targetID === EXPERIMENTATION) {
+      setForceExpanded(true); // prevent collapse when navigating here
+      setIsNavbarCollapsed(false);
+    } else {
+      setForceExpanded(false);
+      setTimeout(() => {
+        triggerAnimations(0, 50, true);
+        setIsNavbarCollapsed(true);
+      }, SCROLL_TIME_MS);
+    }
+
     scrollTo(targetID);
   };
+
+  const navbarHeight = (winHeight - INTRO_VID_ASPECT * winWidth) / 2 - 10;
 
   return (
     <>
@@ -56,12 +75,12 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
           zIndex: isStartNavbar ? 0 : 2,
           transition: isStartNavbarDelayed
             ? ''
-            : `translate ${isNavbarCollapsed ? 1.2 : 0.8}s ease-in-out`,
+            : `translate ${isNavbarCollapsed ? 1 : 0.8}s ease-in-out`,
           position: 'fixed',
           width: '100%',
           height: {
             xs: '150px',
-            sm: `${(winHeight - INTRO_VID_ASPECT * winWidth) / 2 - 10}px`,
+            sm: `${navbarHeight}px`,
           },
           minHeight: '10vh',
           backgroundColor: '#fff',
@@ -83,19 +102,21 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
             },
           }}
         >
-          <AnimateForwardReverse
-            isAnimateIn={animIdx >= 0}
-            animationData={signatureAnimation}
-            backSpeed={3}
-            style={{
-              height: '80%',
-              position: 'relative',
-              maxHeight: isMobile ? '100px' : '120px',
-            }}
-          />
+          <FadeInOut duration={600} delay={100} isFadeIn={animIdx >= 0}>
+            <img
+              src={signature}
+              alt='Ben Thomas Signature'
+              style={{
+                height: '80%',
+                position: 'relative',
+                maxHeight: isMobile ? '100px' : '120px',
+              }}
+            />
+          </FadeInOut>
           <Box
             sx={{
               display: 'flex',
+              gap: '20px',
               justifyContent: 'space-around',
               float: 'right',
               marginLeft: 'auto',
@@ -103,7 +124,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                 xs: 'auto',
                 sm: 'calc(100px + 7vw)',
               },
-              width: '20vw',
+              width: isMobile ? '80vw' : '20vw',
               minWidth: '280px',
             }}
           >
@@ -114,7 +135,6 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                 href={`#{${item}}`}
                 onClick={(e) => {
                   handleLink(e, item);
-                  setIsNavbarCollapsed(true);
                 }}
                 sx={{
                   textDecoration: 'none',
@@ -148,6 +168,8 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
         setIsNavbarCollapsed={setIsNavbarCollapsed}
         isStartNavbar={isStartNavbar}
         setIsStartNavbar={setIsStartNavbar}
+        forceExpanded={forceExpanded}
+        navbarHeight={navbarHeight}
       />
     </>
   );

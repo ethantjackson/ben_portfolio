@@ -102,11 +102,11 @@ const FlippableImageCard = ({ src, text }) => {
         sx={{
           position: 'relative',
           transformStyle: 'preserve-3d',
-          transition: getTransition(),
+          transition: getTransition() + ', box-shadow 0.3s ease-in-out',
           transform,
           cursor: 'pointer',
           borderRadius: 2,
-          boxShadow: 3,
+          boxShadow: isHovered ? 3 : 0,
         }}
       >
         {/* Front side */}

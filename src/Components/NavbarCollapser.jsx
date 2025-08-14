@@ -12,9 +12,25 @@ const NavbarCollapser = ({
   setIsNavbarCollapsed,
   isStartNavbar,
   setIsStartNavbar,
+  forceExpanded,
+  navbarHeight,
 }) => {
   const [enabled, setEnabled] = useState(false);
+  const [localForceExpanded, setLocalForceExpanded] = useState(false);
 
+  // Sync prop-based forceExpanded with local state & timeout
+  useEffect(() => {
+    if (forceExpanded) {
+      setLocalForceExpanded(true);
+      const timeoutId = setTimeout(() => {
+        setLocalForceExpanded(false); // revert to scroll control after delay
+      }, SCROLL_TIME_MS * 2);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [forceExpanded]);
+
+  // Initial activation after leaving start section
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= window.innerHeight - 100 && isStartNavbar) {
@@ -30,13 +46,38 @@ const NavbarCollapser = ({
       },
       window.scrollY > 0 ? SCROLL_TIME_MS : 0
     );
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [isStartNavbar, setIsStartNavbar]);
 
+  // Collapse/expand + enable/disable based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      if (!isNavbarCollapsed) {
-        setIsNavbarCollapsed(true);
-        triggerAnimations(0, 50, true);
+      const isInTopSection =
+        !forceExpanded && window.scrollY < window.innerHeight - navbarHeight;
+
+      if (localForceExpanded) {
+        // Keep navbar expanded during temporary force
+        if (isNavbarCollapsed) {
+          setIsNavbarCollapsed(false);
+          triggerAnimations(200, 200);
+        }
+        setEnabled(true); // button visible while forced
+        return;
+      }
+
+      if (isInTopSection) {
+        if (isNavbarCollapsed) {
+          setIsNavbarCollapsed(false);
+          triggerAnimations(200, 200);
+        }
+        setEnabled(false);
+      } else {
+        if (!isNavbarCollapsed) {
+          setIsNavbarCollapsed(true);
+          triggerAnimations(0, 50, true);
+        }
+        setEnabled(true);
       }
     };
 
@@ -50,9 +91,11 @@ const NavbarCollapser = ({
     isStartNavbar,
     setIsNavbarCollapsed,
     triggerAnimations,
+    localForceExpanded,
+    forceExpanded,
+    navbarHeight,
   ]);
 
-  if (!enabled) return <></>;
   return (
     <Box
       sx={{
@@ -72,16 +115,14 @@ const NavbarCollapser = ({
       }}
       onClick={() => {
         if (isNavbarCollapsed) triggerAnimations(200, 200);
-        else {
-          triggerAnimations(0, 50, true);
-        }
+        else triggerAnimations(0, 50, true);
         setIsNavbarCollapsed(!isNavbarCollapsed);
       }}
     >
-      <Fade in={enabled} timeout={3000}>
+      <Fade in={enabled} timeout={1000}>
         <Box>
           <AnimateForwardReverse
-            isAnimateIn={!isNavbarCollapsed}
+            isAnimateIn={enabled && !isNavbarCollapsed}
             animationData={menuIconAnimation}
             style={{ height: '40px', width: '40px' }}
           />

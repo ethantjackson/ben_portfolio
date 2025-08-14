@@ -19,15 +19,16 @@ const ProjectDetails = ({
       sx={{
         width: { xs: 'calc(100% - 24px)', sm: '80%' },
         marginLeft: { xs: '12px', sm: '10%' },
-        paddingTop: { xs: '1rem', sm: '3rem' },
+        // paddingTop: { xs: '1rem', sm: '3rem' },
+        paddingTop: '20vh',
         paddingBottom: '5rem',
       }}
     >
       <Grid
         item
         xs={12}
-        sm={4}
-        xl={2}
+        sm={5}
+        xl={4}
         sx={{ textAlign: { xs: 'center', sm: 'left' } }}
       >
         <FadeInOnScroll offset={100} delay={0} translate={0}>
