@@ -7,7 +7,7 @@ export const CONTENT_TYPE = Object.freeze({
 export const PROJECTS_INFO = [
   // QUINJET
   {
-    title: 'Creato Display',
+    title: 'Reel 2025 Benjamin Peterson',
     thumbnailTimeSeconds: 1.5,
     thumbnailURL:
       'https://res.cloudinary.com/workoutcloud/video/upload/v1722488383/YerbaMate_MainVideo_yaa37n.mp4',
