@@ -12,8 +12,8 @@ export const PROJECTS_INFO = [
     thumbnailURL:
       'https://res.cloudinary.com/du0rugjrg/video/upload/v1755226891/2025Reel2_ThumbnailVideo_ypde3b.mp4',
     description:
-      'Some highlights from my work over the past couple of years, including 2D, 3D and hand-painted animation. For more specific information on roles, see below.',
-    credits: {
+      'Some highlights from my work over the past couple of years. For more specific information on roles, see below.',
+    Roles: {
 
     },
     detailsContent: [
@@ -22,7 +22,12 @@ export const PROJECTS_INFO = [
         vimeoID: '1104531613',
         width: 12, // accepts values from 1 to 12
       },
-      
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: 'Roles',
+        value:
+          ' :00 Pebbles - Personal Project/All Roles\:03 Bubba\'s LA Splash Animation - Art Director and Lead Artist'
+      },
     ],
   },
 
@@ -127,54 +132,63 @@ export const PROJECTS_INFO = [
     thumbnailURL:
       'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585964/PebbleSim_ThumbnailVideo_a4bc1n.mp4',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illo perspiciatis repellat delectus tenetur eum in neque rem Lorem eligendi inventore ut earum?',
-    credits: {
-      studio: 'Bing Chilling Labs',
-      director: 'Ben Peterson',
-      creativeDirection: 'Ethan Jackson',
+      'This was a fun personal project where I limited myself to working with only a black and white color pallete and forced myself to animate exclusively in Houdini, a tool I\'m continously amazed by in its depth (and difficulty).',
+    Roles: {
+      
     },
     detailsContent: [
       {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '1106770141',
+        width: 12, // accepts values from 1 to 12
+      },
+      {
         contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534625/instaStill1_wa0f4y.png',
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066369/StillSelect4_lr6gf8.png',
+        width: 8, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
         width: 4, // accepts values from 1 to 12
       },
       {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106766274',
-        width: 8, // accepts values from 1 to 12
-      },
-      {
         contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534553/poster_z77luw.png',
-        width: 3,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534623/still2_ypknws.png',
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066368/StillSelect5_kv6ipc.png',
         width: 12,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066311/StillSelect3_adv6ue.png',
+        width: 12,
+      },
+    ],
+  },
+  // Express Way
+  {
+    title: 'The Express Way',
+    thumbnailTimeSeconds: 2.25,
+    thumbnailURL:
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585963/ExpressWay_ThumbnailVideo_hgwxoi.mp4',
+    description:
+      'Over four years in the making, "The Express Way" evolved from an idea by director Danny Lee and the Hill power couple into a nationwide PBS series spotlighting artists\s unique stories and talents. Collaborating closely with Lee and Creative Director Ian Nelson, I designed an energetic main title that unfolds in vignette-style close-ups before revealing the full scope of the show\'s stories and featured artists.',
+    credits: {
+      client: 'PBS',
+      director: 'Danny Lee',
+      creativeDirector: 'Ian Nelson',
+      DesignAndAnimation: 'Ben Thomas',
+    },
+    detailsContent: [
+      {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '1106770316',
+        width: 12, // accepts values from 1 to 12
       },
       {
         contentType: CONTENT_TYPE.TEXT,
         header: 'The Process',
         value:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illo perspiciatis repellat delectus tenetur eum in neque rem Lorem eligendi inventore ut earum?',
+          'This main title went through several iterations before becoming what it is now. We started basic, by filming real paint strokes on plexi glass that would eventually become the letters of the main title. This footage was then taken into After Effects, where a heavy amount of tweaking transformed the footage into animations that clips of the show could be seen through.',
       },
-    ],
-  },
-  // NIIICE SHOT
-  {
-    title: 'NIIICE SHOT',
-    thumbnailURL:
-      'https://res.cloudinary.com/workoutcloud/video/upload/v1722488890/NiiiceShot_TitleSequence_MAINVideo_m6djde.mp4',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illo perspiciatis repellat delectus tenetur eum in neque rem Lorem eligendi inventore ut earum?',
-    credits: {
-      studio: 'Bing Chilling Labs',
-      director: 'Ben Peterson',
-      creativeDirection: 'Ethan Jackson',
-    },
-    detailsContent: [
       {
         contentType: CONTENT_TYPE.STYLEFRAME,
         url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534625/instaStill1_wa0f4y.png',
@@ -186,21 +200,11 @@ export const PROJECTS_INFO = [
         width: 3,
       },
       {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106766274',
-        width: 10, // accepts values from 1 to 12
-      },
-      {
         contentType: CONTENT_TYPE.STYLEFRAME,
         url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534623/still2_ypknws.png',
         width: 12,
       },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: 'The Process',
-        value:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illo perspiciatis repellat delectus tenetur eum in neque rem Lorem eligendi inventore ut earum?',
-      },
+      
     ],
   },
   // NIIICE SHOT
