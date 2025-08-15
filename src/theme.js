@@ -34,6 +34,7 @@ theme.typography.h4 = {
 
 theme.typography.h5 = {
   ...theme.typography.h5,
+  fontSize: '2rem',
   [theme.breakpoints.down('sm')]: {
     fontSize: '1.1rem',
     fontWeight: theme.typography.h5.fontWeight,
@@ -42,8 +43,9 @@ theme.typography.h5 = {
 
 theme.typography.h6 = {
   ...theme.typography.h6,
+  fontSize: '2rem',
   [theme.breakpoints.down('sm')]: {
-    fontSize: '1rem',
+    fontSize: '1.1rem',
     fontWeight: theme.typography.h5.fontWeight,
   },
 };

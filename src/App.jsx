@@ -20,12 +20,33 @@ function App() {
   const [winHeight, setWinHeight] = useState(window.innerHeight);
   const [scrollTarget, setScrollTarget] = useState('');
   const [inStatusMap, setInStatusMap] = useState(() =>
-    Object.fromEntries(NAV_ITEMS.map((item) => [item, true]))
+    Object.fromEntries(
+      NAV_ITEMS.map((item) => {
+        if (item === EXPERIMENTATION) {
+          return [item, false];
+        }
+        return [item, true];
+      })
+    )
   );
   const [enabledStatusMap, setEnabledStatusMap] = useState(() =>
-    Object.fromEntries(NAV_ITEMS.map((item) => [item, true]))
+    Object.fromEntries(
+      NAV_ITEMS.map((item) => {
+        if (item === EXPERIMENTATION) {
+          return [item, false];
+        }
+        return [item, true];
+      })
+    )
   );
   const isScrolling = useRef(false);
+
+  useEffect(() => {
+    console.log('i', inStatusMap);
+  }, [inStatusMap]);
+  useEffect(() => {
+    console.log('e', enabledStatusMap);
+  }, [enabledStatusMap]);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

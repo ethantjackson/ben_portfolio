@@ -22,6 +22,7 @@ const NavbarCollapser = ({
   useEffect(() => {
     if (forceExpanded) {
       setLocalForceExpanded(true);
+      setEnabled(true); // button visible while forced
       const timeoutId = setTimeout(() => {
         setLocalForceExpanded(false); // revert to scroll control after delay
       }, SCROLL_TIME_MS * 2);

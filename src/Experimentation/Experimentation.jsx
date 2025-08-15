@@ -17,6 +17,7 @@ const Experimentation = ({ winHeight, winWidth }) => {
         paddingTop: {
           xs: '180px',
           sm: `calc(${(winHeight - INTRO_VID_ASPECT * winWidth) / 2 + 50}px)`,
+          xl: `calc(${(winHeight - INTRO_VID_ASPECT * winWidth) / 2 + 60}px)`,
         },
         paddingBottom: '8vh',
         minHeight: '100vh',

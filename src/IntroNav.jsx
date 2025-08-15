@@ -52,8 +52,12 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
     event.preventDefault();
 
     if (targetID === EXPERIMENTATION) {
-      setForceExpanded(true); // prevent collapse when navigating here
-      setIsNavbarCollapsed(false);
+      setForceExpanded(true);
+      // Only expand if we're above the 100vh mark
+      if (isStartNavbar) {
+        setIsNavbarCollapsed(false);
+        setIsStartNavbar(false);
+      }
     } else {
       setForceExpanded(false);
       setTimeout(() => {
@@ -103,15 +107,18 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
           }}
         >
           <FadeInOut duration={600} delay={100} isFadeIn={animIdx >= 0}>
-            <img
-              src={signature}
-              alt='Ben Thomas Signature'
-              style={{
-                height: '80%',
-                position: 'relative',
-                maxHeight: isMobile ? '100px' : '120px',
-              }}
-            />
+            <Box onClick={() => window.location.reload()}>
+              <img
+                src={signature}
+                alt='Ben Thomas Signature'
+                style={{
+                  height: '80%',
+                  position: 'relative',
+                  maxHeight: isMobile ? '100px' : '120px',
+                  cursor: 'pointer',
+                }}
+              />
+            </Box>
           </FadeInOut>
           <Box
             sx={{
@@ -139,7 +146,6 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                 sx={{
                   textDecoration: 'none',
                   color: 'inherit',
-                  letterSpacing: '-1px',
                   cursor: 'pointer',
                   fontSize: '1rem',
                   fontWeight: '400',
@@ -151,7 +157,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
                     'letter-spacing 0.3s, opacity 0.5s ease-in-out, top 1s ease',
                   '&:hover': {
                     fontWeight: '700',
-                    letterSpacing: 0,
+                    letterSpacing: '1px',
                   },
                 }}
               >

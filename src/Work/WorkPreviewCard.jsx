@@ -100,7 +100,7 @@ const WorkPreviewCard = ({
     setShowText(hovering);
     if (hovering) {
       clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => setShowText(false), 2000);
+      timeoutRef.current = setTimeout(() => setShowText(false), 3000);
     }
   }, [hovering]);
 
@@ -245,6 +245,7 @@ const WorkPreviewCard = ({
                 opacity: showText && !detailModalOpen ? 1 : 0,
                 transition: `all ${MODAL_ANIM_TIME_MS / 1000}s ease-in-out`,
                 fontFamily: '"Creato Display", sans-serif',
+                fontSize: '50px',
                 fontWeight: 700,
               }}
             >

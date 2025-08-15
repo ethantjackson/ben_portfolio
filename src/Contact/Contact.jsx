@@ -101,7 +101,7 @@ const Contact = () => {
                 mb={{ xs: 2, sm: 5 }}
                 mt={{ xs: 2, sm: 0 }}
               >
-                Email: bcpeters100@gmail.com
+                Email: bentmotion100@gmail.com
               </Typography>
             </FadeInOnScroll>
             <Box

@@ -41,8 +41,8 @@ const ProjectDetails = ({
             variant='h3'
             sx={{
               fontFamily: '"Creato Display", sans-serif',
-              fontWeight: 400,
-              fontSize: '41px',
+              fontWeight: 700,
+              fontSize: '50px',
             }}
           >
             {projectName}
@@ -116,18 +116,22 @@ const ProjectDetails = ({
           return <span key={index}></span>;
         })}
 
-        <Grid item xs={12} sx={{ textAlign: 'center' }} mt={1}>
-          <Typography variant='h4' sx={{ fontWeight: '500' }}>
-            Credits
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sx={{ textAlign: 'center' }}>
-          {Object.entries(projectCredits).map((val, index) => (
-            <Typography variant='h6' key={index}>
-              {_.startCase(val[0])} - {val[1]}
-            </Typography>
-          ))}
-        </Grid>
+        {projectCredits && (
+          <>
+            <Grid item xs={12} sx={{ textAlign: 'center' }} mt={1}>
+              <Typography variant='h4' sx={{ fontWeight: '500' }}>
+                Credits
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sx={{ textAlign: 'center' }}>
+              {Object.entries(projectCredits).map((val, index) => (
+                <Typography variant='h6' key={index}>
+                  {_.startCase(val[0])} - {val[1]}
+                </Typography>
+              ))}
+            </Grid>
+          </>
+        )}
       </Grid>
     </Grid>
   );
