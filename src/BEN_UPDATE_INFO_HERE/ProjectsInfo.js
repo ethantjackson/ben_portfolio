@@ -139,7 +139,7 @@ export const PROJECTS_INFO = [
         contentType: CONTENT_TYPE.TEXT,
         header: 'The Process',
         value:
-          'Below are some exploratory styleframes I designed while concepting the project (including my mispelling of "genious" which made it further into the creative process than I\d like to admit).',
+          'Below are some exploratory styleframes I designed while concepting the project (including my mispelling of "genious" which made it further into the creative process than I\'d like to admit).',
       },
       {
         contentType: CONTENT_TYPE.TEXT,
