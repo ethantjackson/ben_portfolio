@@ -5,79 +5,26 @@ export const CONTENT_TYPE = Object.freeze({
 });
 
 export const PROJECTS_INFO = [
-  // QUINJET
+  // 2025 Reel
   {
-    title: 'Reel 2025 Benjamin Peterson',
-    thumbnailTimeSeconds: 1.5,
+    title: '2025 Reel',
+    thumbnailTimeSeconds: 1,
     thumbnailURL:
-      'https://res.cloudinary.com/workoutcloud/video/upload/v1722488383/YerbaMate_MainVideo_yaa37n.mp4',
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1755215547/2025Reel_ThumbnailVideo_vjlcum.mp4',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illo perspiciatis repellat delectus tenetur eum in neque rem Lorem eligendi inventore ut earum?',
+      'Some highlights from my work over the past couple of years.',
     credits: {
-      studio: 'Bing Chilling Labs',
-      director: 'Ben Peterson',
-      creativeDirection: 'Ethan Jackson',
-      titleTest: 'test',
-      lightingDirector: 'Test Person',
+
     },
     detailsContent: [
       {
-        vimeoID: '1106771724',
-        width: 4, // accepts values from 1 to 12
+        vimeoID: '1104531613',
+        width: 12, // accepts values from 1 to 12
       },
-      {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106766274',
-        width: 6, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106771724',
-        width: 4, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106771724',
-        width: 4, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534625/instaStill1_wa0f4y.png',
-        width: 8, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534553/poster_z77luw.png',
-        width: 3,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534553/poster_z77luw.png',
-        width: 3,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534553/poster_z77luw.png',
-        width: 3,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534553/poster_z77luw.png',
-        width: 3,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1726534623/still2_ypknws.png',
-        width: 12,
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: 'The Process',
-        value:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illo perspiciatis repellat delectus tenetur eum in neque rem Lorem eligendi inventore ut earum?',
-      },
+      
     ],
   },
+
   // YERBA MATTE
   {
     title: 'YERBA MATTE',
