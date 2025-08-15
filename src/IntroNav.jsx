@@ -107,7 +107,10 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
           }}
         >
           <FadeInOut duration={600} delay={100} isFadeIn={animIdx >= 0}>
-            <Box onClick={() => window.location.reload()}>
+            <Box
+              onClick={() => window.location.reload()}
+              sx={{ backgroundColor: 'transparent' }}
+            >
               <img
                 src={signature}
                 alt='Ben Thomas Signature'
