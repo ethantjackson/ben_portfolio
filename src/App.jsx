@@ -41,13 +41,6 @@ function App() {
   );
   const isScrolling = useRef(false);
 
-  useEffect(() => {
-    console.log('i', inStatusMap);
-  }, [inStatusMap]);
-  useEffect(() => {
-    console.log('e', enabledStatusMap);
-  }, [enabledStatusMap]);
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 

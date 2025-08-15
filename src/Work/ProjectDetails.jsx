@@ -96,7 +96,9 @@ const ProjectDetails = ({
           if (content.contentType === CONTENT_TYPE.STYLEFRAME) {
             return (
               <Grid item xs={content.width} key={index}>
-                <img width='100%' alt='ProjectImage' src={content.url} />
+                {content.url && (
+                  <img width='100%' alt='ProjectImage' src={content.url} />
+                )}
               </Grid>
             );
           }
