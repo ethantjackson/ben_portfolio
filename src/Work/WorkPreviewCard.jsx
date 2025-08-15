@@ -156,8 +156,7 @@ const WorkPreviewCard = ({
               }s ease-in-out, transform 0.15s ease-in-out, filter 0.5s ease-in-out`,
               transform:
                 hovering && !detailModalOpen ? 'scale(1.02)' : 'scale(1)',
-              filter:
-                showText && !detailModalOpen ? 'brightness(60%) blur(1px)' : '',
+              filter: showText && !detailModalOpen ? 'brightness(90%)' : '',
             }}
           >
             {detailModalOpen && (
@@ -201,7 +200,7 @@ const WorkPreviewCard = ({
             <Box
               sx={{
                 opacity: detailModalOpen && detailModalOpenDelayed ? 1 : 0,
-                transition: `opacity ${detailModalOpen ? 2 : 0.3}s`,
+                transition: `opacity ${detailModalOpen ? 2 : 0.1}s`,
               }}
             >
               {(detailModalOpen || detailModalOpenDelayed) && (
