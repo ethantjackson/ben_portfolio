@@ -50,4 +50,13 @@ theme.typography.h6 = {
   },
 };
 
+theme.typography.body1 = {
+  ...theme.typography.body1,
+  fontSize: '1.2rem',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+    fontWeight: theme.typography.h5.fontWeight,
+  },
+};
+
 export default theme;

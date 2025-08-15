@@ -35,10 +35,20 @@ const Experimentation = ({ winHeight, winWidth }) => {
           <Grid item xs={12} sm={6} lg={5} xl={4} sx={{ textAlign: 'left' }}>
             <AnimateInView
               animationData={experimentationTextAnimation}
-              style={{ height: '78px', width: '390px', paddingRight: '10px' }}
+              style={{
+                height: '78px',
+                width: '390px',
+                paddingRight: '10px',
+                maxWidth: 'calc(100vw - 50px)',
+              }}
             />
           </Grid>
-          <Grid item xs sx={{ textAlign: 'justify' }} mt={{ xs: 1, sm: 0 }}>
+          <Grid
+            item
+            xs
+            sx={{ textAlign: { xs: 'justify', sm: 'left' } }}
+            mt={{ xs: 1, sm: 0 }}
+          >
             <FadeInOnScroll offset={100} delay={400} translate={0}>
               <Typography variant='h5'>
                 A home for creative practice, weird ideas, and half-baked
@@ -55,7 +65,7 @@ const Experimentation = ({ winHeight, winWidth }) => {
               sx={{
                 height: '2px',
                 background: 'black',
-                width: '80%',
+                width: { xs: 'calc(100% - 24px)', sm: '80%' },
               }}
             />
           </ExpandInOnScroll>

@@ -67,7 +67,7 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
               animationData={workTextAnimation}
               style={{
                 height: '45px',
-                width: '187px',
+                width: isMobile ? '100%' : '187px',
                 marginTop: '8px',
               }}
             />
@@ -76,7 +76,7 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
             item
             xs
             sx={{
-              textAlign: 'justify',
+              textAlign: { xs: 'justify', sm: 'left' },
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',

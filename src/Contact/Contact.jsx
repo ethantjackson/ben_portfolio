@@ -40,7 +40,12 @@ const Contact = () => {
               }}
             />
           </Grid>
-          <Grid item xs pl={isMobile ? 0 : 2} sx={{ textAlign: 'justify' }}>
+          <Grid
+            item
+            xs
+            pl={isMobile ? 0 : 2}
+            sx={{ textAlign: { xs: 'justify', sm: 'left' } }}
+          >
             <FadeInOnScroll offset={100} delay={400} translate={0}>
               <Typography
                 variant='h5'
@@ -93,7 +98,7 @@ const Contact = () => {
             item
             xs
             pl={isMobile ? 0 : 2}
-            sx={{ textAlign: { xs: 'center', sm: 'justify' } }}
+            sx={{ textAlign: { xs: 'center', sm: 'left' } }}
           >
             <FadeInOnScroll offset={100} delay={800} translate={0} inline>
               <Typography

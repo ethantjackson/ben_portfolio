@@ -58,6 +58,7 @@ const ProjectDetails = ({
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            textAlign: { xs: 'justify', sm: 'left' },
           }}
         >
           <Typography variant='h6'>{projectDescription}</Typography>
@@ -69,7 +70,7 @@ const ProjectDetails = ({
           item
           mt={{ xs: 3, sm: 6 }}
           mb={{ xs: 3, sm: 6 }}
-          ml={{ xs: '12px', sm: '10%' }}
+          ml={{ xs: '0', sm: '10%' }}
           sx={{
             height: '2px',
             background: 'black',
@@ -103,11 +104,22 @@ const ProjectDetails = ({
             return (
               <React.Fragment key={index}>
                 <Grid item xs={12} sx={{ textAlign: 'center' }} mt={1}>
-                  <Typography variant='h4' sx={{ fontWeight: '500' }}>
+                  <Typography
+                    variant='h4'
+                    sx={{
+                      fontFamily: '"Creator Display", sans-serif',
+                      fontWeight: '700',
+                      fontSize: '2.8rem',
+                    }}
+                  >
                     {content.header}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sx={{ textAlign: 'justify' }}>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{ textAlign: { xs: 'justify', sm: 'left' } }}
+                >
                   <Typography variant='h6'>{content.value}</Typography>
                 </Grid>
               </React.Fragment>
@@ -119,7 +131,14 @@ const ProjectDetails = ({
         {projectCredits && (
           <>
             <Grid item xs={12} sx={{ textAlign: 'center' }} mt={1}>
-              <Typography variant='h4' sx={{ fontWeight: '500' }}>
+              <Typography
+                variant='h4'
+                sx={{
+                  fontFamily: '"Creator Display", sans-serif',
+                  fontWeight: '700',
+                  fontSize: '2.8rem',
+                }}
+              >
                 Credits
               </Typography>
             </Grid>
