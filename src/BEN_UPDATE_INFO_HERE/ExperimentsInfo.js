@@ -1,9 +1,5 @@
 export const EXPERIMENTS_INFO = [
-  {
-    url: '',
-    width: 4,
-    text: '',
-  },
+  
   {
     url: 'https://res.cloudinary.com/workoutcloud/image/upload/v1754290759/02_HeadOnSmash_lwgamy.png',
     width: 8,
@@ -11,24 +7,16 @@ export const EXPERIMENTS_INFO = [
   },
   {
     url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157371/03_ProfileSmash_xrfuoh.png',
-    width: 7,
+    width: 8,
     text: "Both of these stills were also touched up in Photoshop, especially in designing the background text.",
   },
-  {
-    url: '',
-    width: 4,
-    text: '',
-  },
+
   {
     url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1755301924/specRaspberry_ofe7sn.gif',
     width: 5, // accepts values from 1 to 12
     text: 'I made this when I was playing around with a condensation rig and I ended up learning a lot about food rendering and how important subsurface lighting is to making things look real/delicious.',
   },
-  {
-    url: '',
-    width: 1,
-    text: '',
-  },
+  
   {
     url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1755302237/RaspberryStill_p5zxzl.png',
     width: 5,
@@ -36,7 +24,7 @@ export const EXPERIMENTS_INFO = [
   },
   {
     url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1755302531/PlanetProject_3_ncdmvg.gif',
-    width: 9,
+    width: 4,
     text: 'Surprisingly this project was done entirely in After Effects with the Orb plugin. I really wanted to capture a sense of atmosphere and viscerally intense lighting with this one. If you want to see the full version with music check out my Vimeo!',
   },
   {
