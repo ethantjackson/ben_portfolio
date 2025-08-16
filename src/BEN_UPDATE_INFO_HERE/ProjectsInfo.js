@@ -112,7 +112,7 @@ export const PROJECTS_INFO = [
   // Kinetic Type
   {
     title: 'Madness/Genius',
-    thumbnailTimeSeconds: 3.75,
+    thumbnailTimeSeconds: 3.15,
     thumbnailURL:
       'https://res.cloudinary.com/du0rugjrg/video/upload/v1755283301/RideTheLine2_ThumbnailVideo_pfnoya.mp4',
     description:
@@ -599,6 +599,96 @@ export const PROJECTS_INFO = [
       
     ],
   },
+  // Guilt
+  {
+    title: 'Guilt Title Sequence',
+    thumbnailTimeSeconds: 1,
+    thumbnailURL:
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585963/Guilt_ThumbnailVideo_pe2ctc.mp4',
+    description:
+      'I worked closely with Denisz Akyurek to create an opening title for his film "Guilt" that captured the eerie, "what\'s in the shadows" feeling that constantly holds viewers on edge throughout the entire film as you explore the protagonist\'s descent into madness.',
+    credits: {
+      Director: 'Denisz Akyurek',
+      creativeDirector: 'Ben Thomas',
+      DesignAndAnimation: 'Ben Thomas',
+    },
+    detailsContent: [
+      {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '1106771175',
+        width: 12, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: '',
+        value:
+          '',
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: 'The Process',
+        value:
+          'Below are a few glimpses behind the scenes to lighting development and modeling the cramped basement room.',
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: '',
+        value:
+          '',
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157251/Guilt_EarlyLighting_angkya.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157244/GuiltAltLighting2_bzhvkv.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157236/Guilt_Styleframe3_kkkn3q.png',
+        width: 12,
+      },
+      
+    ],
+  },
+  // Yerba Matte
+  {
+    title: 'Yerba Matte',
+    thumbnailTimeSeconds: 1.25,
+    thumbnailURL:
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1755215815/YerbaMate_ThumbnailVideo_i29lrk.mp4',
+    description:
+      'This is a personal project I made as an intern to practice my skills in product animation. I had a small hope it would one day get picked up by the drink brand Guayaki, but in the meantime enjoy the fake brand name can I designed.',
+    roles: {
+      
+    },
+    detailsContent: [
+      {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '992385020',
+        width: 12, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157702/yerb2_fscmvl.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157694/yerb4_wgidxq.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157698/yerb1_ivu22r.png',
+        width: 12,
+      },
+      
+    ],
+  },
   // Dexcom
   {
     title: 'Dexcom G7',
@@ -652,61 +742,6 @@ export const PROJECTS_INFO = [
         contentType: CONTENT_TYPE.VIDEO_EMBED,
         vimeoID: '1110362036',
         width: 10, // accepts values from 1 to 12
-      },
-      
-    ],
-  },
-  // Guilt
-  {
-    title: 'Guilt Title Sequence',
-    thumbnailTimeSeconds: 1,
-    thumbnailURL:
-      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585963/Guilt_ThumbnailVideo_pe2ctc.mp4',
-    description:
-      'I worked closely with Denisz Akyurek to create an opening title for his film "Guilt" that captured the eerie, "what\'s in the shadows" feeling that constantly holds viewers on edge throughout the entire film as you explore the protagonist\'s descent into madness.',
-    credits: {
-      Director: 'Denisz Akyurek',
-      creativeDirector: 'Ben Thomas',
-      DesignAndAnimation: 'Ben Thomas',
-    },
-    detailsContent: [
-      {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106771175',
-        width: 12, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: '',
-        value:
-          '',
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: 'The Process',
-        value:
-          'Below are a few glimpses behind the scenes to lighting development and modeling the cramped basement room.',
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: '',
-        value:
-          '',
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157251/Guilt_EarlyLighting_angkya.png',
-        width: 6,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157244/GuiltAltLighting2_bzhvkv.png',
-        width: 6,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157236/Guilt_Styleframe3_kkkn3q.png',
-        width: 12,
       },
       
     ],
