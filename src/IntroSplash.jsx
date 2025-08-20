@@ -64,6 +64,7 @@ const IntroSplash = () => {
           allow='autoplay; fullscreen; picture-in-picture'
           allowFullScreen
           title='Intro Video'
+          loading='lazy'
           style={{
             width: '100%',
             height: '100%',

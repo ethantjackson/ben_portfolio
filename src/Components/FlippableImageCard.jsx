@@ -92,6 +92,7 @@ const FlippableImageCard = ({ src, text }) => {
       sx={{
         perspective: '3000px',
         display: 'inline-block',
+        width: '100%',
       }}
       onClick={() => setFlipped((prev) => !prev)}
       onMouseMove={handleMouseMove}

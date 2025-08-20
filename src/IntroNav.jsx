@@ -144,6 +144,7 @@ const IntroNav = ({ winHeight, winWidth, scrollTo }) => {
               width: isMobile ? '80vw' : '20vw',
               minWidth: '280px',
             }}
+            mb={isMobile ? 2 : 0}
           >
             {NAV_ITEMS.map((item, idx) => (
               <Typography

@@ -79,9 +79,11 @@ const Experimentation = ({ winHeight, winWidth }) => {
         >
           {EXPERIMENTS_INFO.map((info, index) => (
             <Grid item xs={12} sm={info.width} key={index}>
-              <FadeInOnScroll delay={0} offset={0} translate={100}>
-                <FlippableImageCard src={info.url} text={info.text} />
-              </FadeInOnScroll>
+              {info.url && (
+                <FadeInOnScroll delay={0} offset={0} translate={100}>
+                  <FlippableImageCard src={info.url} text={info.text} />
+                </FadeInOnScroll>
+              )}
             </Grid>
           ))}
         </Grid>
