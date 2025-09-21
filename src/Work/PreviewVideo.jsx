@@ -1,13 +1,13 @@
-import React, { useRef, useEffect, Suspense, lazy } from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
-
-const ReactPlayer = lazy(() => import('react-player'));
+import React, { useRef, useEffect } from 'react';
+import ReactPlayer from 'react-player';
 
 const PreviewVideo = ({ src, play, seekTime = 0, hidden = false }) => {
   const playerRef = useRef(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  // Seek to desired time when not playing
   useEffect(() => {
     if (!playerRef.current) return;
 
@@ -41,25 +41,21 @@ const PreviewVideo = ({ src, play, seekTime = 0, hidden = false }) => {
         transition: '0.5s ease-in-out',
       }}
     >
-      <Suspense
-        fallback={<div style={{ height: '100%', background: '#000' }} />}
-      >
-        <ReactPlayer
-          ref={playerRef}
-          src={src}
-          playing={!isMobile && play}
-          muted
-          loop
-          playsInline
-          width='100%'
-          height='100%'
-          light={isMobile && getCloudinaryThumbnail(src, seekTime)}
-          style={{
-            objectFit: 'cover',
-          }}
-          onReady={init}
-        />
-      </Suspense>
+      <ReactPlayer
+        ref={playerRef}
+        src={src}
+        playing={!isMobile && play}
+        muted
+        loop
+        playsInline
+        width='100%'
+        height='100%'
+        light={isMobile && getCloudinaryThumbnail(src, seekTime)}
+        style={{
+          objectFit: 'cover',
+        }}
+        onReady={init}
+      />
     </div>
   );
 };
