@@ -110,8 +110,7 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
         <Grid container pt={{ xs: 4, xl: 6 }} spacing={{ xs: 2, xl: 3 }} mb={5}>
           {PROJECTS_INFO.map((project, idx) => {
             const isWide =
-              !isMobile &&
-              (idx === 0 || (idx - 1) % 4 === 0 || (idx - 1) % 4 === 3);
+              !isMobile && ((idx - 1) % 4 === 0 || (idx - 1) % 4 === 3);
             const widthFraction = idx === 0 ? 1 : isWide ? 21 / 37 : 16 / 37;
             let fadeInDelay = isMobile ? 0 : idx % 2 === 0 ? 300 : 500;
             // if (idx === 2) fadeInDelay = 500;
@@ -126,7 +125,7 @@ const Work = ({ isScrollingToWork, winHeight, winWidth }) => {
                     xs: '100%',
                     sm: `${widthFraction * 100}%`,
                   },
-                  aspectRatio: isWide ? '21/9' : '16/9',
+                  aspectRatio: idx === 0 ? '37/9' : isWide ? '21/9' : '16/9',
                 }}
               >
                 <WorkPreviewCard
