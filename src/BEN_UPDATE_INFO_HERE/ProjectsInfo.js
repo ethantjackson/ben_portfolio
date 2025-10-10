@@ -108,101 +108,6 @@ export const PROJECTS_INFO = [
       },
     ],
   },
-
-  // Kinetic Type
-  {
-    title: 'Madness/Genius',
-    thumbnailTimeSeconds: 3.15,
-    thumbnailURL:
-      'https://res.cloudinary.com/du0rugjrg/video/upload/v1755283301/RideTheLine2_ThumbnailVideo_pfnoya.mp4',
-    description:
-      'As a part of Bubba\'s LA\'s rebrand, I designed and animated a kinetic type treatment of the studio\'s catchphrase "Riding the line between madness and genius."',
-    credits: {
-      studio: 'Bubbas LA',
-      creativeDirector: 'Ian Nelson',
-      DesignAndAnimation: 'Ben Peterson'
-      
-    },
-    detailsContent: [
-      {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106770278',
-        width: 12, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: '',
-        value:
-          '',
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: 'The Process',
-        value:
-          'Below are some exploratory styleframes I designed while concepting the project (including my mispelling of "genious" which made it further into the creative process than I\'d like to admit).',
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: '',
-        value:
-          '',
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066448/KineticTypography_2.1_hklzs3.png',
-        width: 4, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066444/KineticTypography_1.2_xv1kn5.png',
-        width: 4,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066443/KineticTypography_1.1_vqrjyh.png',
-        width: 4,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066441/KineticTypography_4_vubcbt.png',
-        width: 6,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066434/KineticTypography_3.1_vxztpv.png',
-        width: 6,
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: '',
-        value:
-          'More WIP styleframes and unused concepts that got left on the cutting room floor',
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: '',
-        value:
-          '',
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066423/styleframe_Madness3_udlsvm.png',
-        width: 6,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066421/styleframe_Madness2_esqpxf.png',
-        width: 6,
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066415/styleframe_Between2_eeafle.png',
-        width: 12,
-      },
-      
-
-    ],
-  },
   // Pebbles
   {
     title: 'Pebbles',
@@ -247,6 +152,131 @@ export const PROJECTS_INFO = [
       {
         contentType: CONTENT_TYPE.STYLEFRAME,
         width: 4, // accepts values from 1 to 12
+      },
+    ],
+  },
+  // Glaringly Obvious
+  {
+    title: 'Glaringly Obvious',
+    thumbnailTimeSeconds: .5,
+    thumbnailURL:
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1760077187/GlaringlyObvious_HighBitrate_axarvm.mp4',
+    description:
+      'Another personal project I made exploring the concept of the limitless potential we all have located just behind our eyes. I experimented with a variety of textures and techniques, but I primarily wanted to work on my "fake 3D" skills in After effects and all the opportunities for textures that workflow provides. But of course, I also had to splash in a little real 3D in there.',
+    Roles: {
+      
+    },
+    detailsContent: [
+      {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '1126093679',
+        width: 12, // accepts values from 1 to 12
+      },
+            {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: '',
+        width: 10, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1760077216/GlaringlyObvious_styleframe06_mrbffu.png',
+        width: 12, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: '',
+        width: 2, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1760077216/GlaringlyObvious_styleframe01.1_l8n0ib.png',
+        width: 8,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        width: 2, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1760077217/GlaringlyObvious_styleframe04_h1n9xj.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1760077214/GlaringlyObvious_styleframe02_rnung2.png',
+        width: 6, // accepts values from 1 to 12
+      },
+    ],
+  },
+  // Midas
+  {
+    title: 'Midas Tires',
+    thumbnailTimeSeconds: 2,
+    thumbnailURL:
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585967/Midas_ThumbnailVideo_bgwblv.mp4',
+    description:
+      'Midas approached us to revamp their library of stills for marketing and storefront content. We were tasked with modeling, texturing, lighting, and rendering a suite of images of many of their tires in different poses. The stills had to be photoreal, but sleeker than their real world counterparts.',
+    credits: {
+      Client: 'Midas',
+      creativeDirector: 'Ian Nelson',
+      LightingAndComp: 'Ben Thomas',
+      SnowVFX: 'Derek Kruk'
+    },
+    detailsContent: [
+
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066204/ManyTiresStills_mzcpej.png',
+        width: 12, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1755276787/Encounter_1B_wk3car.png',
+        width: 6, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066205/Blizzak_4A_snow_select_n8y3nj.png',
+        width: 6, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: 'The Process',
+        value:
+          'The team at Bubba’s was in charge of handling the whole 3D pipeline for this project. We started with real tires, all wheeled into our office and photographed. These references became models, which after meticulous review became Cinema 4D scenes that were finally rendered and brought into Photoshop to touch up. Some tires also got a snow treatment which was done through a simulation in Houdini, that was then also brought back into Cinema 4D.',
+      },
+      {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '992379183',
+        width: 10, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066220/3A_wireframe2_fwsafc.png',
+        width: 12, // accepts values from 1 to 12
+      },
+    ],
+  },
+    // Thorogood Boots
+  {
+    title: 'Thorogood Boots',
+    thumbnailTimeSeconds: 2,
+    thumbnailURL:
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585965/ThorogoodBoots_ThumbnailVideo_ocl16b.mp4',
+    description:
+      'I worked closely with creative director Derek Kruk to concept, storyboard, and animate this piece showing off the durability of Thorogood Boots. While Derek did the 3D animation and simulations in Houdini, I created the text overlays that punctuate the piece.',
+    credits: {
+      Client: 'Thorogood Boots',
+      creativeDirector: 'Derek Kruk and Ian Nelson',
+      creativeConceptingAndStoryboards: 'Derek Kruk and Ben Thomas',
+      Animation: 'Derek Kruk and Ben Thomas',
+      DynamicsAndVFX: 'Derek Kruk',
+    },
+    detailsContent: [
+     {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '1106770241',
+        width: 12, // accepts values from 1 to 12
       },
     ],
   },
@@ -356,78 +386,7 @@ export const PROJECTS_INFO = [
       
     ],
   },
-  // Thorogood Boots
-  {
-    title: 'Thorogood Boots',
-    thumbnailTimeSeconds: 2,
-    thumbnailURL:
-      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585965/ThorogoodBoots_ThumbnailVideo_ocl16b.mp4',
-    description:
-      'I worked closely with creative director Derek Kruk to concept, storyboard, and animate this piece showing off the durability of Thorogood Boots. While Derek did the 3D animation and simulations in Houdini, I created the text overlays that punctuate the piece.',
-    credits: {
-      Client: 'Thorogood Boots',
-      creativeDirector: 'Derek Kruk and Ian Nelson',
-      creativeConceptingAndStoryboards: 'Derek Kruk and Ben Thomas',
-      Animation: 'Derek Kruk and Ben Thomas',
-      DynamicsAndVFX: 'Derek Kruk',
-    },
-    detailsContent: [
-     {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106770241',
-        width: 12, // accepts values from 1 to 12
-      },
-    ],
-  },
-  // Midas
-  {
-    title: 'Midas Tires',
-    thumbnailTimeSeconds: 2,
-    thumbnailURL:
-      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585967/Midas_ThumbnailVideo_bgwblv.mp4',
-    description:
-      'Midas approached us to revamp their library of stills for marketing and storefront content. We were tasked with modeling, texturing, lighting, and rendering a suite of images of many of their tires in different poses. The stills had to be photoreal, but sleeker than their real world counterparts.',
-    credits: {
-      Client: 'Midas',
-      creativeDirector: 'Ian Nelson',
-      LightingAndComp: 'Ben Thomas',
-      SnowVFX: 'Derek Kruk'
-    },
-    detailsContent: [
 
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066204/ManyTiresStills_mzcpej.png',
-        width: 12, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1755276787/Encounter_1B_wk3car.png',
-        width: 6, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066205/Blizzak_4A_snow_select_n8y3nj.png',
-        width: 6, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.TEXT,
-        header: 'The Process',
-        value:
-          'The team at Bubba’s was in charge of handling the whole 3D pipeline for this project. We started with real tires, all wheeled into our office and photographed. These references became models, which after meticulous review became Cinema 4D scenes that were finally rendered and brought into Photoshop to touch up. Some tires also got a snow treatment which was done through a simulation in Houdini, that was then also brought back into Cinema 4D.',
-      },
-      {
-        contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '992379183',
-        width: 10, // accepts values from 1 to 12
-      },
-      {
-        contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066220/3A_wireframe2_fwsafc.png',
-        width: 12, // accepts values from 1 to 12
-      },
-    ],
-  },
   // Big Foot AT2/Legacy AS
   {
     title: 'Big O Tires',
@@ -599,23 +558,24 @@ export const PROJECTS_INFO = [
       
     ],
   },
-  // Guilt
+    // Kinetic Type
   {
-    title: 'Guilt Title Sequence',
-    thumbnailTimeSeconds: 1,
+    title: 'Madness/Genius',
+    thumbnailTimeSeconds: 3.15,
     thumbnailURL:
-      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585963/Guilt_ThumbnailVideo_pe2ctc.mp4',
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1755283301/RideTheLine2_ThumbnailVideo_pfnoya.mp4',
     description:
-      'I worked closely with Denisz Akyurek to create an opening title for his film "Guilt" that captured the eerie, "what\'s in the shadows" feeling that constantly holds viewers on edge throughout the entire film as you explore the protagonist\'s descent into madness.',
+      'As a part of Bubba\'s LA\'s rebrand, I designed and animated a kinetic type treatment of the studio\'s catchphrase "Riding the line between madness and genius."',
     credits: {
-      Director: 'Denisz Akyurek',
-      creativeDirector: 'Ben Thomas',
-      DesignAndAnimation: 'Ben Thomas',
+      studio: 'Bubbas LA',
+      creativeDirector: 'Ian Nelson',
+      DesignAndAnimation: 'Ben Peterson'
+      
     },
     detailsContent: [
       {
         contentType: CONTENT_TYPE.VIDEO_EMBED,
-        vimeoID: '1106771175',
+        vimeoID: '1106770278',
         width: 12, // accepts values from 1 to 12
       },
       {
@@ -628,7 +588,7 @@ export const PROJECTS_INFO = [
         contentType: CONTENT_TYPE.TEXT,
         header: 'The Process',
         value:
-          'Below are a few glimpses behind the scenes to lighting development and modeling the cramped basement room.',
+          'Below are some exploratory styleframes I designed while concepting the project (including my mispelling of "genious" which made it further into the creative process than I\'d like to admit).',
       },
       {
         contentType: CONTENT_TYPE.TEXT,
@@ -638,20 +598,58 @@ export const PROJECTS_INFO = [
       },
       {
         contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157251/Guilt_EarlyLighting_angkya.png',
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066448/KineticTypography_2.1_hklzs3.png',
+        width: 4, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066444/KineticTypography_1.2_xv1kn5.png',
+        width: 4,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066443/KineticTypography_1.1_vqrjyh.png',
+        width: 4,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066441/KineticTypography_4_vubcbt.png',
         width: 6,
       },
       {
         contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157244/GuiltAltLighting2_bzhvkv.png',
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066434/KineticTypography_3.1_vxztpv.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: '',
+        value:
+          'More WIP styleframes and unused concepts that got left on the cutting room floor',
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: '',
+        value:
+          '',
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066423/styleframe_Madness3_udlsvm.png',
         width: 6,
       },
       {
         contentType: CONTENT_TYPE.STYLEFRAME,
-        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157236/Guilt_Styleframe3_kkkn3q.png',
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066421/styleframe_Madness2_esqpxf.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754066415/styleframe_Between2_eeafle.png',
         width: 12,
       },
       
+
     ],
   },
   // Yerba Matte
@@ -742,6 +740,61 @@ export const PROJECTS_INFO = [
         contentType: CONTENT_TYPE.VIDEO_EMBED,
         vimeoID: '1110362036',
         width: 10, // accepts values from 1 to 12
+      },
+      
+    ],
+  },
+    // Guilt
+  {
+    title: 'Guilt Title Sequence',
+    thumbnailTimeSeconds: 1,
+    thumbnailURL:
+      'https://res.cloudinary.com/du0rugjrg/video/upload/v1754585963/Guilt_ThumbnailVideo_pe2ctc.mp4',
+    description:
+      'I worked closely with Denisz Akyurek to create an opening title for his film "Guilt" that captured the eerie, "what\'s in the shadows" feeling that constantly holds viewers on edge throughout the entire film as you explore the protagonist\'s descent into madness.',
+    credits: {
+      Director: 'Denisz Akyurek',
+      creativeDirector: 'Ben Thomas',
+      DesignAndAnimation: 'Ben Thomas',
+    },
+    detailsContent: [
+      {
+        contentType: CONTENT_TYPE.VIDEO_EMBED,
+        vimeoID: '1106771175',
+        width: 12, // accepts values from 1 to 12
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: '',
+        value:
+          '',
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: 'The Process',
+        value:
+          'Below are a few glimpses behind the scenes to lighting development and modeling the cramped basement room.',
+      },
+      {
+        contentType: CONTENT_TYPE.TEXT,
+        header: '',
+        value:
+          '',
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157251/Guilt_EarlyLighting_angkya.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157244/GuiltAltLighting2_bzhvkv.png',
+        width: 6,
+      },
+      {
+        contentType: CONTENT_TYPE.STYLEFRAME,
+        url: 'https://res.cloudinary.com/du0rugjrg/image/upload/v1754157236/Guilt_Styleframe3_kkkn3q.png',
+        width: 12,
       },
       
     ],
