@@ -44,13 +44,13 @@ export const PROJECTS_INFO = [
         contentType: CONTENT_TYPE.TEXT,
         header: '',
         value:
-          ':10 Niiice Shot Title Sequence - Artist'
+          ':10 Glaringly Obvious - Personal Project/All Roles'
       },
       {
         contentType: CONTENT_TYPE.TEXT,
         header: '',
         value:
-          ':13 Bubba’s LA Catchphrase Animation - Lead Artist'
+          ':13 Nice Shot Title Sequence - Lead Artist'
       },
       {
         contentType: CONTENT_TYPE.TEXT,
@@ -68,7 +68,7 @@ export const PROJECTS_INFO = [
         contentType: CONTENT_TYPE.TEXT,
         header: '',
         value:
-          ':21 That Which We Left Behind - Personal Project/All Roles'
+          ':21 Bubba’s LA Catchphrase - Personal Project/All Roles'
       },
       {
         contentType: CONTENT_TYPE.TEXT,
@@ -80,7 +80,7 @@ export const PROJECTS_INFO = [
         contentType: CONTENT_TYPE.TEXT,
         header: '',
         value:
-          ':30 Guilt Title Sequence - All Roles'
+          ':30 That Which We Left Behind - Personal Project/All Roles'
       },
       {
         contentType: CONTENT_TYPE.TEXT,
