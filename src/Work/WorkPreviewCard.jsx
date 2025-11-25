@@ -90,9 +90,9 @@ const WorkPreviewCard = ({
         const checkScrollEnd = () => {
           const rect = el.getBoundingClientRect();
           const elCenter = rect.top + rect.height / 2;
-          const winCenter = window.innerHeight / 2;
-
-          if (Math.abs(elCenter - winCenter) < 5) {
+          const topThird = window.innerHeight / 3;
+          const bottomThird = window.innerHeight * (2 / 3);
+          if (elCenter >= topThird && elCenter <= bottomThird) {
             setTimeout(() => {
               expandToModal(true);
               setDetailModalOpen(true);
