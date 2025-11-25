@@ -7,6 +7,7 @@ import ProjectDetails from './ProjectDetails';
 // import SeeMoreIndicator from './SeeMoreIndicator';
 import FadeInOnScroll from '../Transitions/FadeInOnScroll';
 import PreviewVideo from './PreviewVideo';
+import _ from 'lodash';
 
 const WorkPreviewCard = ({
   thumbnailURL,
@@ -66,7 +67,11 @@ const WorkPreviewCard = ({
   const urlProject = searchParams.get('project');
   // Auto-open modal if URL contains this project's name
   useEffect(() => {
-    if (urlProject && projectName && urlProject === projectName) {
+    if (
+      urlProject &&
+      projectName &&
+      _.toLower(urlProject) === _.toLower(projectName)
+    ) {
       setTimeout(() => {
         if (cardRef.current) {
           const el = cardRef.current;
