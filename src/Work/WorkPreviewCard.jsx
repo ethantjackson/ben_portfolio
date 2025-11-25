@@ -65,43 +65,46 @@ const WorkPreviewCard = ({
 
   const searchParams = new URLSearchParams(window.location.search);
   const urlProject = searchParams.get('project');
+  const wasParamHandled = useRef(false);
   // Auto-open modal if URL contains this project's name
   useEffect(() => {
     if (
-      urlProject &&
-      projectName &&
-      _.toLower(urlProject) === _.toLower(projectName)
+      wasParamHandled.current ||
+      !urlProject ||
+      !projectName ||
+      _.toLower(urlProject) !== _.toLower(projectName)
     ) {
-      setTimeout(() => {
-        if (cardRef.current) {
-          const el = cardRef.current;
-
-          // Scroll card to the center of the viewport
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-          // Wait until scrolling is finished, then open modal
-          const checkScrollEnd = () => {
-            const rect = el.getBoundingClientRect();
-
-            // Element is centered if its center is near window center
-            const elCenter = rect.top + rect.height / 2;
-            const winCenter = window.innerHeight / 2;
-
-            if (Math.abs(elCenter - winCenter) < 5) {
-              // Small delay to ensure scroll settling
-              setTimeout(() => {
-                expandToModal(true);
-                setDetailModalOpen(true);
-              }, 300);
-            } else {
-              requestAnimationFrame(checkScrollEnd);
-            }
-          };
-
-          requestAnimationFrame(checkScrollEnd);
-        }
-      }, 0);
+      return;
     }
+
+    wasParamHandled.current = true;
+
+    setTimeout(() => {
+      if (cardRef.current) {
+        const el = cardRef.current;
+
+        // Scroll card to the center of the viewport
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Wait until scroll finishes, then open modal
+        const checkScrollEnd = () => {
+          const rect = el.getBoundingClientRect();
+          const elCenter = rect.top + rect.height / 2;
+          const winCenter = window.innerHeight / 2;
+
+          if (Math.abs(elCenter - winCenter) < 5) {
+            setTimeout(() => {
+              expandToModal(true);
+              setDetailModalOpen(true);
+            }, 300);
+          } else {
+            requestAnimationFrame(checkScrollEnd);
+          }
+        };
+
+        requestAnimationFrame(checkScrollEnd);
+      }
+    }, 0);
   }, [urlProject, projectName, expandToModal]);
 
   useEffect(() => {
