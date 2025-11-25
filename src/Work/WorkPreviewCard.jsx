@@ -62,6 +62,43 @@ const WorkPreviewCard = ({
     [winWidth, winHeight, isMobile] // include isMobile in dependencies
   );
 
+  const searchParams = new URLSearchParams(window.location.search);
+  const urlProject = searchParams.get('project');
+  // Auto-open modal if URL contains this project's name
+  useEffect(() => {
+    if (urlProject && projectName && urlProject === projectName) {
+      setTimeout(() => {
+        if (cardRef.current) {
+          const el = cardRef.current;
+
+          // Scroll card to the center of the viewport
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          // Wait until scrolling is finished, then open modal
+          const checkScrollEnd = () => {
+            const rect = el.getBoundingClientRect();
+
+            // Element is centered if its center is near window center
+            const elCenter = rect.top + rect.height / 2;
+            const winCenter = window.innerHeight / 2;
+
+            if (Math.abs(elCenter - winCenter) < 5) {
+              // Small delay to ensure scroll settling
+              setTimeout(() => {
+                expandToModal(true);
+                setDetailModalOpen(true);
+              }, 300);
+            } else {
+              requestAnimationFrame(checkScrollEnd);
+            }
+          };
+
+          requestAnimationFrame(checkScrollEnd);
+        }
+      }, 0);
+    }
+  }, [urlProject, projectName, expandToModal]);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (

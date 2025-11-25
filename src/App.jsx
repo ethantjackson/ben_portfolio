@@ -44,6 +44,9 @@ function App() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const searchParams = new URLSearchParams(window.location.search);
+  const hasProjectParam = searchParams.get('project');
+
   const updateNonTargetStatus = (setStatusMap, targetID) => {
     setStatusMap((prevMap) => {
       const updatedMap = { ...prevMap };
@@ -108,12 +111,15 @@ function App() {
       const workSection = document.getElementById(WORK);
       const hasReachedWorkSection =
         workSection?.getBoundingClientRect().top <= 0;
-      if (!hasReachedWorkSection) e.preventDefault();
+      if (!hasProjectParam && !hasReachedWorkSection) e.preventDefault();
       const deltaY = e.deltaY;
       if (deltaY < 0) {
         return;
       }
-      if (!isMobile || window.scrollY >= window.innerHeight) {
+      if (
+        !hasProjectParam &&
+        (!isMobile || window.scrollY >= window.innerHeight)
+      ) {
         scrollTo(WORK);
         window.removeEventListener('wheel', handleScroll);
         window.removeEventListener('touchmove', handleScroll);
@@ -153,7 +159,7 @@ function App() {
       {(enabledStatusMap[WORK] || enabledStatusMap[CONTACT]) && (
         <FadeInOut isFadeIn={inStatusMap[WORK] || inStatusMap[CONTACT]}>
           <Work
-            isScrollingToWork={scrollTarget !== ''}
+            isScrollingToWork={hasProjectParam || scrollTarget !== ''}
             winHeight={winHeight}
             winWidth={winWidth}
           />
