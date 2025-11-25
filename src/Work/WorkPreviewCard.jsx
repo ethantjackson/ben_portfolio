@@ -96,7 +96,7 @@ const WorkPreviewCard = ({
             setTimeout(() => {
               expandToModal(true);
               setDetailModalOpen(true);
-            }, 300);
+            }, 700);
           } else {
             requestAnimationFrame(checkScrollEnd);
           }

@@ -11,18 +11,18 @@ const IntroSplash = () => {
     // Fade in effect
     const fadeIn = setTimeout(() => setOpacity(1), 500);
 
-    // Initialize Vimeo player
-    if (iframeRef.current) {
-      playerRef.current = new Player(iframeRef.current, {
-        autoplay: true,
-        muted: true,
-        loop: true,
-        background: true,
-      });
-    }
-
     // Scroll listener to pause/play
     const handleScroll = () => {
+      // Initialize Vimeo player
+      if (!playerRef.current && iframeRef.current) {
+        playerRef.current = new Player(iframeRef.current, {
+          autoplay: true,
+          muted: true,
+          loop: true,
+          background: true,
+        });
+      }
+
       const scrollY = window.scrollY || window.pageYOffset;
       if (scrollY > window.innerHeight && playerRef.current) {
         playerRef.current.pause();
